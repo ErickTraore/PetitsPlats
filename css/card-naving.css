@@ -1,0 +1,19 @@
+.cardheader {
+  width: 100%;
+  height: auto;
+  display: flex; }
+  .cardheader__header {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: solid 4px #00ff11; }
+    .cardheader__header__naving {
+      width: auto;
+      height: auto;
+      border: solid 4px #050101;
+      display: flex; }
+
+/*# sourceMappingURL=card-naving.css.map */

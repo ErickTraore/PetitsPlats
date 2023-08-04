@@ -1,0 +1,28 @@
+.cardheader{
+    width: 100%;
+    height: auto;
+    display: flex;
+    &__header{
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        border: solid 4px rgb(0, 255, 17);
+        &__naving{
+            width: auto;
+            height: auto;
+            border: solid 4px rgb(5, 1, 1);
+            display: flex;
+            
+        //     &__ingredient{
+        //         width: auto;
+        //         height: auto;
+        //         border: solid 4px rgb(185, 12, 12);
+        //         display: flex;
+        //     }
+        }
+
+    }
+}
