@@ -1,18 +1,166 @@
 .card {
-  width: 100%;
+  width: auto;
   height: auto;
   display: flex; }
   .card__header {
-    width: 100%;
-    height: 50px;
+    width: auto;
+    height: auto;
     display: flex;
-    justify-content: center;
-    border: solid 4px #2600ff; }
+    justify-content: flex-start; }
     .card__header__naving {
-      width: 80%;
-      height: 30px;
-      border: solid 4px #050101;
-      display: flex; }
+      width: auto;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+      border: solid 3px blue; }
+      .card__header__naving__columnOne {
+        width: auto;
+        height: auto;
+        display: flex;
+        border: solid 3px green;
+        justify-content: center;
+        margin: 20px auto; }
+        .card__header__naving__columnOne__header {
+          width: auto;
+          height: auto;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          border: solid 3px #ba17c3; }
+          .card__header__naving__columnOne__header__title {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            border: solid 3px orange; }
+            .card__header__naving__columnOne__header__title p {
+              width: auto;
+              height: auto;
+              margin: auto 5px; }
+            .card__header__naving__columnOne__header__title img {
+              width: auto;
+              height: auto;
+              margin: auto 10px;
+              transform: rotate(0deg); }
+          .card__header__naving__columnOne__header__modal {
+            width: auto;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            border: solid 3px black; }
+            .card__header__naving__columnOne__header__modal__input {
+              position: relative;
+              width: auto;
+              height: auto;
+              display: flex;
+              border: solid 3px #b31010; }
+              .card__header__naving__columnOne__header__modal__input span {
+                position: absolute;
+                right: 8px;
+                width: 10%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center; }
+      .card__header__naving__columnTwo {
+        width: auto;
+        height: auto;
+        display: flex;
+        border: solid 3px black;
+        justify-content: center;
+        margin: 20px auto; }
+        .card__header__naving__columnTwo__header {
+          width: auto;
+          height: auto;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column; }
+          .card__header__naving__columnTwo__header__title {
+            width: auto;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            border: solid 3px orange; }
+            .card__header__naving__columnTwo__header__title p {
+              width: auto;
+              height: auto;
+              margin: auto 5px; }
+            .card__header__naving__columnTwo__header__title img {
+              width: auto;
+              height: auto;
+              margin: auto 10px; }
+          .card__header__naving__columnTwo__header__modal {
+            width: auto;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            border: solid 3px black; }
+            .card__header__naving__columnTwo__header__modal__input {
+              position: relative;
+              width: auto;
+              height: auto;
+              display: flex;
+              border: solid 3px #b31010; }
+              .card__header__naving__columnTwo__header__modal__input span {
+                position: absolute;
+                right: 8px;
+                width: 10%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center; }
+      .card__header__naving__columnThree {
+        width: auto;
+        height: auto;
+        display: flex;
+        border: solid 3px #d8c731;
+        justify-content: center;
+        margin: 20px auto; }
+        .card__header__naving__columnThree__header {
+          width: auto;
+          height: auto;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column; }
+          .card__header__naving__columnThree__header__title {
+            width: auto;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            border: solid 3px orange; }
+            .card__header__naving__columnThree__header__title p {
+              width: auto;
+              height: auto;
+              margin: auto 5px; }
+            .card__header__naving__columnThree__header__title img {
+              width: auto;
+              height: auto;
+              margin: auto 10px; }
+          .card__header__naving__columnThree__header__modal {
+            width: auto;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            border: solid 3px black; }
+            .card__header__naving__columnThree__header__modal__input {
+              position: relative;
+              width: auto;
+              height: auto;
+              display: flex;
+              border: solid 3px #b31010; }
+              .card__header__naving__columnThree__header__modal__input span {
+                position: absolute;
+                right: 8px;
+                width: 10%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center; }
   .card__all {
     width: 100%;
     height: auto;
@@ -114,5 +262,25 @@
                     width: 100%;
                     height: auto;
                     line-height: 1em; }
+
+.toggle-up {
+  animation-name: toggle-up;
+  animation-delay: 0.25s;
+  animation-duration: 0.75;
+  animation-fill-mode: forwards; }
+
+.toggle-down {
+  animation-name: toggle-down;
+  animation-delay: 0.25s;
+  animation-duration: 0.75;
+  animation-fill-mode: forwards; }
+
+/* animation */
+@keyframes toggle-up {
+  100% {
+    transform: rotate(180deg); } }
+@keyframes toggle-down {
+  100% {
+    transform: rotate(180deg); } }
 
 /*# sourceMappingURL=card.css.map */

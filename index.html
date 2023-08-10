@@ -31,14 +31,68 @@
     </header>
     
     <main>
-        <div class = "card">
-            <div class = "card__header">
-                <div class = "card__header__naving"></div>
+        <div class="card">
+            <div class="card__header">
+                <div class="card__header__naving">
+                   <div class="card__header__naving__columnOne">
+                        <div class="card__header__naving__columnOne__header">
+                            <div class="card__header__naving__columnOne__header__title">
+                                <p>Ingredients</p>
+                                <img class="card__header__naving__columnOne__header__title__img" src="/assets/icon/Vector 1.svg"/>
+                            </div>
+                            <div class="card__header__naving__columnOne__header__modal">
+                                <div class="card__header__naving__columnOne__header__modal__input">
+                                    <input id="searchingredients" type="text" />
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                                <div class="card__header__naving__columnOne__header__list">
+                                    Ingredients
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                   <div class="card__header__naving__columnTwo">
+                        <div class="card__header__naving__columnTwo__header">
+                            <div class="card__header__naving__columnTwo__header__title">
+                                <p>Appareils</p>
+                                <img class="card__header__naving__columnTwo__header__title__img" src="/assets/icon/Vector 1.svg"/>
+                            </div>
+                            <div class="card__header__naving__columnTwo__header__modal">
+                                <div class="card__header__naving__columnTwo__header__modal__input">
+                                    <input type="text" />
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                                <div class="card__header__naving__ccolumnTwo__header__list">
+                                    Ingredients
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="card__header__naving__columnThree">
+                        <div class="card__header__naving__columnThree__header">
+                            <div class="card__header__naving__columnThree__header__title">
+                                <p>Ustensiles</p>
+                                <img class="card__header__naving__columnThree__header__title__img" src="/assets/icon/Vector 1.svg"/>
+                            </div>
+                            <div class="card__header__naving__columnThree__header__modal">
+                                 <div class="card__header__naving__columnThree__header__modal__input">
+                                    <input type="text" />
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                                <div class="card__header__naving__columnThree__header__list">
+                                    Ingredients
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                </div>
             </div>
-            <div class = "card__all">
+            <div class="card__all">
 
             </div>
         </div>
+        <div id="demo"> </div>
+        <div> COUCOU</div>
        
     </main>
     <footer></footer>
@@ -50,6 +104,7 @@
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
       <script src="scripts/factories/factoriesCard.js"></script>
       <script src="scripts/pages/index.js" type="module"></script>
+      <script src="scripts/pages/searchNaving.js" type="module"></script>
       <script src="scripts/api/Api.js" type="module" ></script>
       <!-- Entry point -->
     

@@ -1,22 +1,224 @@
-
-.card{
-    width: 100%;
+.card {
+    width: auto;
     height: auto;
     display: flex;
-    &__header{
-        width: 100%;
-        height: 50px;
+
+    &__header {
+        width: auto;
+        height: auto;
         display: flex;
-        justify-content: center;
-        border: solid 4px rgb(38, 0, 255);
-        &__naving{
-            width: 80%;
-            height: 30px;
-            border: solid 4px rgb(5, 1, 1);
+        justify-content: flex-start;
+
+        &__naving {
+            width: auto;
+            height: 100%;
             display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
+            border: solid 3px blue;
+
+            &__columnOne {
+                width: auto;
+                height: auto;
+                display: flex;
+                border: solid 3px green;
+                justify-content: center;
+                margin: 20px auto;
+
+                &__header {
+                    width: auto;
+                    height: auto;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: column;
+                    border: solid 3px rgb(186, 23, 195);
+
+
+                    &__title {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        border: solid 3px orange;
+
+                        p {
+                            width: auto;
+                            height: auto;
+                            margin: auto 5px;
+                        }
+
+                        img {
+                            width: auto;
+                            height: auto;
+                            margin: auto 10px;
+                            transform: rotate(0deg);
+                        }
+
+                    }
+
+                    &__modal {
+                        width: auto;
+                        height: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        flex-direction: column;
+                        border: solid 3px black;
+
+                        &__input {
+                            position: relative;
+                            width: auto;
+                            height: auto;
+                            display: flex;
+                            border: solid 3px rgb(179, 16, 16);
+
+                            span {
+                                position: absolute;
+                                right: 8px;
+                                width: 10%;
+                                height: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__columnTwo {
+                width: auto;
+                height: auto;
+                display: flex;
+                border: solid 3px black;
+                justify-content: center;
+                margin: 20px auto;
+
+                &__header {
+                    width: auto;
+                    height: auto;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: column;
+
+                    &__title {
+                        width: auto;
+                        height: auto;
+                        display: flex;
+                        justify-content: space-between;
+                        border: solid 3px orange;
+
+                        p {
+                            width: auto;
+                            height: auto;
+                            margin: auto 5px;
+                        }
+
+                        img {
+                            width: auto;
+                            height: auto;
+                            margin: auto 10px;
+                        }
+
+                    }
+
+                    &__modal {
+                        width: auto;
+                        height: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        flex-direction: column;
+                        border: solid 3px black;
+
+                        &__input {
+                            position: relative;
+                            width: auto;
+                            height: auto;
+                            display: flex;
+                            border: solid 3px rgb(179, 16, 16);
+
+                            span {
+                                position: absolute;
+                                right: 8px;
+                                width: 10%;
+                                height: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__columnThree {
+                width: auto;
+                height: auto;
+                display: flex;
+                border: solid 3px rgb(216, 199, 49);
+                justify-content: center;
+                margin: 20px auto;
+
+                &__header {
+                    width: auto;
+                    height: auto;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: column;
+
+                    &__title {
+                        width: auto;
+                        height: auto;
+                        display: flex;
+                        justify-content: space-between;
+                        border: solid 3px orange;
+
+                        p {
+                            width: auto;
+                            height: auto;
+                            margin: auto 5px;
+                        }
+
+                        img {
+                            width: auto;
+                            height: auto;
+                            margin: auto 10px;
+                        }
+
+                    }
+
+                    &__modal {
+                        width: auto;
+                        height: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        flex-direction: column;
+                        border: solid 3px black;
+
+                        &__input {
+                            position: relative;
+                            width: auto;
+                            height: auto;
+                            display: flex;
+                            border: solid 3px rgb(179, 16, 16);
+
+                            span {
+                                position: absolute;
+                                right: 8px;
+                                width: 10%;
+                                height: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
-    &__all{
+
+    &__all {
         width: 100%;
         height: auto;
         border: solid 4px red;
@@ -25,7 +227,8 @@
         flex-wrap: wrap;
         justify-content: space-around;
         background-color: lightgray;
-        &__recette{
+
+        &__recette {
             width: 35vh;
             height: auto;
             display: flex;
@@ -33,7 +236,8 @@
             border-radius: 10px 10px 0px 0px;
             background-color: white;
             margin-bottom: 40px;
-            &__img{
+
+            &__img {
                 position: relative;
                 width: 35vh;
                 height: auto;
@@ -41,21 +245,24 @@
                 display: flex;
                 flex-direction: row;
                 border-radius: 10px 10px 0px 0px;
+
                 img {
-                width: 70.3vh;
-                height: 23vh;
-                display: flex;
-                object-fit: cover;
-                border-radius: 10px 10px 0px 0px;
+                    width: 70.3vh;
+                    height: 23vh;
+                    display: flex;
+                    object-fit: cover;
+                    border-radius: 10px 10px 0px 0px;
                 }
             }
-            &__header{
+
+            &__header {
                 position: absolute;
                 width: 36vh;
                 height: auto;
                 display: flex;
-                flex-direction: row-reverse; 
-                &__content{
+                flex-direction: row-reverse;
+
+                &__content {
                     width: 9vh;
                     height: auto;
                     display: flex;
@@ -68,19 +275,21 @@
                 }
             }
 
-            &__body{
+            &__body {
                 width: 100%;
                 height: auto;
                 display: flex;
                 justify-content: center;
-                &__content{
+
+                &__content {
                     width: 90%;
                     height: auto;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
+
                     // border: solid 3px rgb(0, 255, 38);
-                    &__title{
+                    &__title {
                         width: auto;
                         height: auto;
                         display: flex;
@@ -88,56 +297,86 @@
                         font-size: 16px;
                         padding: 20px 0px;
                     }
-                    &__recette{
+
+                    &__recette {
                         width: auto;
                         height: auto;
                         display: flex;
                         font-size: 10px;
                     }
-                    &__ingredients{
+
+                    &__ingredients {
                         width: auto;
                         height: auto;
                         display: flex;
                         flex-direction: column;
-                        &__items{
+
+                        &__items {
                             width: 100%;
                             height: auto;
                             display: flex;
                             flex-direction: row;
                             flex-wrap: wrap;
                             font-size: 7px;
-                            &__boucle{
+
+                            &__boucle {
                                 width: 50%;
                                 height: auto;
                                 margin-bottom: 20px;
                                 font-size: 10px;
 
-                                &__title{
+                                &__title {
                                     width: 100%;
                                     height: auto;
-                                    &__p{
+
+                                    &__p {
                                         width: 100%;
                                         height: auto;
                                         font-weight: 500;
                                         line-height: 0em;
                                     }
                                 }
-                                &__quantity{
+
+                                &__quantity {
                                     width: 100%;
                                     height: auto;
-                                    &__p{
+
+                                    &__p {
                                         width: 100%;
                                         height: auto;
                                         line-height: 1em;
                                     }
                                 }
                             }
-                        
-                            }
+
+                        }
                     }
                 }
- 
-          }
+
+            }
         }
+    }
+}
+.toggle-up {
+    animation-name: toggle-up;
+    animation-delay: 0.25s;
+    animation-duration: 0.75;
+    animation-fill-mode: forwards;
+}
+.toggle-down {
+    animation-name: toggle-down;
+    animation-delay: 0.25s;
+    animation-duration: 0.75;
+    animation-fill-mode: forwards;
+}
+/* animation */
+@keyframes toggle-up {
+    100% {
+        transform: rotate(180deg);
+    }
+}
+@keyframes toggle-down {
+    100% {
+        transform: rotate(180deg);
     }
 }
