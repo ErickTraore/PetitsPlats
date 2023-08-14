@@ -1,3 +1,9 @@
+.myicon {
+  width: auto;
+  height: auto;
+  margin: auto 10px;
+  transform: rotate(180deg); }
+
 .card {
   width: auto;
   height: auto;
@@ -30,8 +36,8 @@
           flex-direction: column;
           border: solid 3px #ba17c3; }
           .card__header__naving__columnOne__header__title {
-            width: 100%;
-            height: 100%;
+            width: auto;
+            height: auto;
             display: flex;
             justify-content: space-between;
             border: solid 3px orange; }
@@ -42,15 +48,13 @@
             .card__header__naving__columnOne__header__title img {
               width: auto;
               height: auto;
-              margin: auto 10px;
-              transform: rotate(0deg); }
+              margin: auto 10px; }
           .card__header__naving__columnOne__header__modal {
             width: auto;
-            height: 100%;
+            height: auto;
             display: flex;
-            justify-content: space-between;
-            flex-direction: column;
-            border: solid 3px black; }
+            border: solid 3px #4529e5;
+            flex-direction: column; }
             .card__header__naving__columnOne__header__modal__input {
               position: relative;
               width: auto;

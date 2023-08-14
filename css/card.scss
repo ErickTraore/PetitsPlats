@@ -1,3 +1,14 @@
+.mystyle {
+    // visibility: hidden;
+    }
+.myicon {
+    width: auto;
+    height: auto;
+    margin: auto 10px;
+    transform: rotate(180deg);
+
+   }
+    
 .card {
     width: auto;
     height: auto;
@@ -36,8 +47,8 @@
 
 
                     &__title {
-                        width: 100%;
-                        height: 100%;
+                        width: auto;
+                        height: auto;
                         display: flex;
                         justify-content: space-between;
                         border: solid 3px orange;
@@ -52,19 +63,18 @@
                             width: auto;
                             height: auto;
                             margin: auto 10px;
-                            transform: rotate(0deg);
                         }
 
                     }
 
                     &__modal {
                         width: auto;
-                        height: 100%;
+                        height: auto;
                         display: flex;
-                        justify-content: space-between;
+                        border: solid 3px rgb(69, 41, 229);
                         flex-direction: column;
-                        border: solid 3px black;
 
+                       
                         &__input {
                             position: relative;
                             width: auto;
