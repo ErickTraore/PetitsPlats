@@ -37,7 +37,7 @@ icon.addEventListener('click', function() {
     iconup.classList.toggle("myicon");
     
     const activeDisplay = document.querySelector(".card__header__naving__columnOne__header__content");
-    const valuehtml ="<div class='card__header__naving__columnOne__header__modal__input'><input type='text' class='card__header__naving__columnOne__header__modal__input'/><span class='glyphicon glyphicon-search'></span></div><div class='card__header__naving__columnOne__header__modal__list'></div>"
+    const valuehtml ="<div class='card__header__naving__columnOne__header__modal__input'><input type='text' id='searchIngredients' class='card__header__naving__columnOne__header__modal__input'/><span class='glyphicon glyphicon-search'></span></div><div class='card__header__naving__columnOne__header__modal__list'></div>"
 
     console.log(test);
     if(test){
@@ -45,6 +45,15 @@ icon.addEventListener('click', function() {
         console.log("Je suis un yankee true");
         activeDisplay.innerHTML = valuehtml;
         listIngredients(); 
+
+        const inputSearch = document.getElementById ('searchIngredients');
+
+        inputSearch.addEventListener ('input', event => {
+            let dataInput = event.target.value.toLowerCase ();
+            console.log (dataInput);
+            // console.log(allIngredients);
+            let vCard = [];
+        })
     }
     else{
         console.log("Je suis un yankee false");
@@ -55,8 +64,3 @@ icon.addEventListener('click', function() {
 
 
 });
-async function initDom() {
-
-       
-
-}

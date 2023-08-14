@@ -44,7 +44,7 @@ icon.addEventListener('click', function() {
     iconup.classList.toggle("myicon");
     
     const activeDisplay = document.querySelector(".card__header__naving__columnThree__header__content");
-    const valuehtml ="<div class='card__header__naving__columnThree__header__modal__input'><input type='text' class='card__header__naving__columnThree__header__modal__input'/><span class='glyphicon glyphicon-search'></span></div><div class='card__header__naving__columnThree__header__modal__list'></div>"
+    const valuehtml ="<div class='card__header__naving__columnThree__header__modal__input'><input type='text' id='searchUstensils' class='card__header__naving__columnThree__header__modal__input'/><span class='glyphicon glyphicon-search'></span></div><div class='card__header__naving__columnThree__header__modal__list'></div>"
 
     console.log(test);
     if(test) {
