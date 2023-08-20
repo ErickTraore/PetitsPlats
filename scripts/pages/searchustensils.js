@@ -4,7 +4,7 @@ import { getItems } from "./index.js";
 const dataIngredients = await getItems();
 const recipes = dataIngredients.items.recipes;
 const AllUstensils = [];
-let test = false;
+let testUstensils = false;
 
 
 // Céation de la liste des ustensils pour la création de la fonctionnalité :RECHERCHE.
@@ -38,18 +38,18 @@ AllUstensils.forEach((element) => {
 // Mise en place du click d'ouverture ou de fermeture de la modal: Ustensils.
 const icon = document.querySelector(".card__header__naving__columnThree__header__title");
 icon.addEventListener('click', function() {
-    test = !test;
+    testUstensils = !testUstensils;
 
     const iconup = document.querySelector(".card__header__naving__columnThree__header__title__img");
     iconup.classList.toggle("myicon");
     
-    const activeDisplay = document.querySelector(".card__header__naving__columnThree__header__content");
+    const activeDisplayUstensils = document.querySelector(".card__header__naving__columnThree__header__content");
     const valuehtml ="<div class='card__header__naving__columnThree__header__modal__input'><input type='text' id='searchUstensils' class='card__header__naving__columnThree__header__modal__input'/><span class='glyphicon glyphicon-search'></span></div><div class='card__header__naving__columnThree__header__modal__list'><ul class='card__header__naving__columnThree__header__modal__list__ul' id='myUL'></ul></div>"
 
-    console.log(test);
-    if(test) {
+    console.log(testUstensils);
+    if(testUstensils) {
         console.log("Je suis un yankee true");
-        activeDisplay.innerHTML = valuehtml;
+        activeDisplayUstensils.innerHTML = valuehtml;
         listUstensils(); 
         console.log(AllUstensils);
         goToTheDOM();
@@ -79,7 +79,7 @@ icon.addEventListener('click', function() {
     }
     else { 
         console.log("Je suis un yankee false");
-        activeDisplay.innerHTML = '';
+        activeDisplayUstensils.innerHTML = '';
     }
 
 

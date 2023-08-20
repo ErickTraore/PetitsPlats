@@ -3,8 +3,9 @@ import { getItems } from "./index.js";
 // récupération des données pour le traitement de la page.
 const dataIngredients = await getItems();
 const recipes = dataIngredients.items.recipes;
+
 const allIngredients = [];
-let test = false;
+let testIngredients = false;
 
 
 // Céation de la liste des ingrediens pour la création de la fonctionnalité :RECHERCHE.
@@ -32,19 +33,26 @@ allIngredients.forEach((element) => {
 // Mise en place du click d'ouverture ou de fermeture de la modal: Ingredients.
 const icon = document.querySelector(".card__header__naving__columnOne__header__title");
 icon.addEventListener('click', function() {
-    test = !test;
+    testIngredients = !testIngredients;
 
     const iconup = document.querySelector(".card__header__naving__columnOne__header__title__img");
     iconup.classList.toggle("myicon");
     
-    const activeDisplay = document.querySelector(".card__header__naving__columnOne__header__content");
+    const activeDisplayIngred = document.querySelector(".card__header__naving__columnOne__header__modal");
+    const activeDisplayAppareils = document.querySelector(".card__header__naving__columnTwo__header__content");
+    const activeDisplayUstensils = document.querySelector(".card__header__naving__columnThree__header__content");
+
+
     const valuehtml ="<div class='card__header__naving__columnOne__header__modal__input'><input type='text' id='searchIngredients' class='card__header__naving__columnOne__header__modal__input'/><span class='glyphicon glyphicon-search'></span></div><div class='card__header__naving__columnOne__header__modal__list'><ul class='card__header__naving__columnOne__header__modal__list__ul' id='myUL'></ul></div>"
 
-    console.log(test);
-    if(test){
+    console.log(testIngredients);
+    if(testIngredients){
+        activeDisplayAppareils.innerHTML = '';
+        activeDisplayUstensils.innerHTML = '';
+
         console.log(allIngredients);
         console.log("Je suis un yankee true");
-        activeDisplay.innerHTML = valuehtml;
+        activeDisplayIngred.innerHTML = valuehtml;
         listIngredients(); 
 
         const inputSearch = document.getElementById('searchIngredients');
@@ -73,7 +81,7 @@ icon.addEventListener('click', function() {
     }
     else{
         console.log("Je suis un yankee false");
-        activeDisplay.innerHTML = '';
+        activeDisplayIngred.innerHTML = '';
 
 
     }

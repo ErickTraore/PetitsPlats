@@ -1,19 +1,27 @@
 import Api from "../api/Api.js";
-
  let allRecipes = [];
+
  // Permet de récuperer toutes les données de l'api
-   export async function getItems() {
-            const itemsApi = new Api('data/recipes.json')
-            const items = await itemsApi.get()
-            allRecipes = items;
-        return ({
-            items })
-    }
+    export async function getItems() {
+      const itemsApi = new Api('data/recipes.json')
+      const items = await itemsApi.get()
+      allRecipes = items;
+      // On affiche le total des recettes.
+      const navCount = document.querySelector('.card__header__naving__navcount')
+      let numbRecettes = items.recipes.length;
+      navCount.innerHTML = numbRecettes + " " + 'recettes';
+      console.log(numbRecettes);
+
+  return ({
+      items })
+}
+  
     // On affiche toutes les données (recettes') grace à l'utilisation du design patern factory
     async function  getDataCard(data) {
+
       const cardSection = document.querySelector(".card__all");
+
       data.forEach((card) => {
-        console.log('card',card);
         const cardModel = cardFactory(card);
         const makeCardDOM = cardModel.makeCardDOM();
         cardSection.appendChild(makeCardDOM);

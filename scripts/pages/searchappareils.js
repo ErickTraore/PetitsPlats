@@ -4,7 +4,7 @@ import { getItems } from "./index.js";
 const dataIngredients = await getItems();
 const recipes = dataIngredients.items.recipes;
 const AllAppareils = [];
-let test = false;
+let testAppareils = false;
 
 
 // Céation de la liste des appareils pour la création de la fonctionnalité :RECHERCHE.
@@ -34,18 +34,18 @@ AllAppareils.forEach((element) => {
 // Mise en place du click d'ouverture ou de fermeture de la modal: Appareils.
 const icon = document.querySelector(".card__header__naving__columnTwo__header__title");
 icon.addEventListener('click', function() {
-    test = !test;
+    testAppareils = !testAppareils;
 
     const iconup = document.querySelector(".card__header__naving__columnTwo__header__title__img");
     iconup.classList.toggle("myicon");
     
-    const activeDisplay = document.querySelector(".card__header__naving__columnTwo__header__content");
+    const activeDisplayAppareils = document.querySelector(".card__header__naving__columnTwo__header__content");
     const valuehtml ="<div class='card__header__naving__columnTwo__header__modal__input'><input type='text' id='searchAppareils' class='card__header__naving__columnTwo__header__modal__input'/><span class='glyphicon glyphicon-search'></span></div><div class='card__header__naving__columnTwo__header__modal__list'><ul class='card__header__naving__columnTwo__header__modal__list__ul' id='myUL'></ul></div>"
 
-    console.log(test);
-    if(test) {
+    console.log(testAppareils);
+    if(testAppareils) {
         console.log("Je suis un yankee true");
-        activeDisplay.innerHTML = valuehtml;
+        activeDisplayAppareils.innerHTML = valuehtml;
         listAppareils(); 
         // console.log(AllAppareils);
         goToTheDOM();
@@ -75,7 +75,7 @@ icon.addEventListener('click', function() {
     }
     else { 
         console.log("Je suis un yankee false");
-        activeDisplay.innerHTML = '';
+        activeDisplayAppareils.innerHTML = '';
     }
 
 

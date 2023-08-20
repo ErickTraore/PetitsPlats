@@ -1,3 +1,7 @@
+main {
+  width: auto;
+  height: auto; }
+
 .myicon {
   width: auto;
   height: auto;
@@ -5,62 +9,64 @@
   transform: rotate(180deg); }
 
 .card {
-  width: auto;
+  width: 100%;
   height: auto;
   display: flex; }
   .card__header {
-    width: auto;
-    height: auto;
+    width: 85%;
+    height: 80px;
     display: flex;
-    justify-content: flex-start; }
+    justify-content: space-between;
+    margin: auto auto; }
     .card__header__naving {
-      width: auto;
-      height: 100%;
+      width: 100%;
+      height: auto;
       display: flex;
-      flex-wrap: wrap;
       flex-direction: row;
-      justify-content: space-between;
-      border: solid 3px blue; }
+      justify-content: space-between; }
       .card__header__naving__columnOne {
-        width: auto;
+        width: 20%;
         height: auto;
         display: flex;
-        border: solid 3px green;
-        justify-content: center;
-        margin: 20px auto; }
+        justify-content: flex-start;
+        margin: 15px 10px;
+        border: solid 1px gray; }
         .card__header__naving__columnOne__header {
-          width: auto;
+          width: 100%;
           height: auto;
           display: flex;
-          justify-content: space-between;
-          flex-direction: column;
-          border: solid 3px #ba17c3; }
+          flex-direction: column; }
           .card__header__naving__columnOne__header__title {
-            width: auto;
+            width: 20%;
             height: auto;
             display: flex;
             justify-content: space-between;
-            border: solid 3px orange; }
+            border: solid 1px gray;
+            border: none;
+            margin-bottom: 10px; }
             .card__header__naving__columnOne__header__title p {
               width: auto;
               height: auto;
-              margin: auto 5px; }
+              margin: auto 5px;
+              margin: 15px 5px; }
             .card__header__naving__columnOne__header__title img {
               width: auto;
               height: auto;
               margin: auto 10px; }
           .card__header__naving__columnOne__header__modal {
-            width: auto;
-            height: auto;
+            width: 100%;
+            height: 100%;
             display: flex;
-            border: solid 3px #4529e5;
-            flex-direction: column; }
+            justify-content: space-between;
+            flex-direction: column;
+            background-color: white; }
             .card__header__naving__columnOne__header__modal__input {
               position: relative;
-              width: auto;
+              width: 95%;
               height: auto;
               display: flex;
-              border: solid 3px #b31010; }
+              justify-content: flex-end;
+              border-radius: 3px 3px; }
               .card__header__naving__columnOne__header__modal__input span {
                 position: absolute;
                 right: 8px;
@@ -69,46 +75,60 @@
                 display: flex;
                 justify-content: center;
                 align-items: center; }
+            .card__header__naving__columnOne__header__modal__list {
+              width: auto;
+              height: auto;
+              display: flex;
+              background-color: white; }
+              .card__header__naving__columnOne__header__modal__list__ul {
+                width: auto;
+                height: auto;
+                list-style-type: none; }
+                .card__header__naving__columnOne__header__modal__list__ul li a {
+                  line-height: 1.7; }
       .card__header__naving__columnTwo {
-        width: auto;
+        width: 20%;
         height: auto;
         display: flex;
-        border: solid 3px black;
-        justify-content: center;
-        margin: 20px auto; }
+        justify-content: flex-start;
+        margin: 15px 10px;
+        border: solid 1px gray; }
         .card__header__naving__columnTwo__header {
-          width: auto;
+          width: 100%;
           height: auto;
           display: flex;
-          justify-content: space-between;
           flex-direction: column; }
           .card__header__naving__columnTwo__header__title {
-            width: auto;
+            width: 20%;
             height: auto;
             display: flex;
             justify-content: space-between;
-            border: solid 3px orange; }
+            border: solid 1px gray;
+            border: none;
+            margin-bottom: 10px; }
             .card__header__naving__columnTwo__header__title p {
               width: auto;
               height: auto;
-              margin: auto 5px; }
+              margin: auto 5px;
+              margin: 15px 5px; }
             .card__header__naving__columnTwo__header__title img {
               width: auto;
               height: auto;
               margin: auto 10px; }
           .card__header__naving__columnTwo__header__modal {
-            width: auto;
+            width: 100%;
             height: 100%;
             display: flex;
             justify-content: space-between;
             flex-direction: column;
-            border: solid 3px black; }
+            background-color: white; }
             .card__header__naving__columnTwo__header__modal__input {
               position: relative;
-              width: auto;
+              width: 95%;
               height: auto;
               display: flex;
-              border: solid 3px #b31010; }
+              justify-content: flex-end;
+              border-radius: 3px 3px; }
               .card__header__naving__columnTwo__header__modal__input span {
                 position: absolute;
                 right: 8px;
@@ -117,46 +137,60 @@
                 display: flex;
                 justify-content: center;
                 align-items: center; }
+            .card__header__naving__columnTwo__header__modal__list {
+              width: auto;
+              height: auto;
+              display: flex;
+              background-color: white; }
+              .card__header__naving__columnTwo__header__modal__list__ul {
+                width: auto;
+                height: auto;
+                list-style-type: none; }
+                .card__header__naving__columnTwo__header__modal__list__ul li a {
+                  line-height: 1.7; }
       .card__header__naving__columnThree {
-        width: auto;
+        width: 20%;
         height: auto;
         display: flex;
-        border: solid 3px #d8c731;
-        justify-content: center;
-        margin: 20px auto; }
+        justify-content: flex-start;
+        margin: 15px 10px;
+        border: solid 1px gray; }
         .card__header__naving__columnThree__header {
-          width: auto;
+          width: 100%;
           height: auto;
           display: flex;
-          justify-content: space-between;
           flex-direction: column; }
           .card__header__naving__columnThree__header__title {
-            width: auto;
+            width: 20%;
             height: auto;
             display: flex;
             justify-content: space-between;
-            border: solid 3px orange; }
+            border: solid 1px gray;
+            border: none;
+            margin-bottom: 10px; }
             .card__header__naving__columnThree__header__title p {
               width: auto;
               height: auto;
-              margin: auto 5px; }
+              margin: auto 5px;
+              margin: 15px 5px; }
             .card__header__naving__columnThree__header__title img {
               width: auto;
               height: auto;
               margin: auto 10px; }
           .card__header__naving__columnThree__header__modal {
-            width: auto;
+            width: 100%;
             height: 100%;
             display: flex;
             justify-content: space-between;
             flex-direction: column;
-            border: solid 3px black; }
+            background-color: white; }
             .card__header__naving__columnThree__header__modal__input {
               position: relative;
-              width: auto;
+              width: 95%;
               height: auto;
               display: flex;
-              border: solid 3px #b31010; }
+              justify-content: flex-end;
+              border-radius: 3px 3px; }
               .card__header__naving__columnThree__header__modal__input span {
                 position: absolute;
                 right: 8px;
@@ -165,15 +199,34 @@
                 display: flex;
                 justify-content: center;
                 align-items: center; }
+            .card__header__naving__columnThree__header__modal__list {
+              width: auto;
+              height: auto;
+              display: flex;
+              background-color: white; }
+              .card__header__naving__columnThree__header__modal__list__ul {
+                width: auto;
+                height: auto;
+                list-style-type: none; }
+                .card__header__naving__columnThree__header__modal__list__ul li a {
+                  line-height: 1.7; }
+      .card__header__naving__navcount {
+        width: 40%;
+        height: auto;
+        display: flex;
+        justify-content: flex-end;
+        margin: 15px auto; }
   .card__all {
-    width: 100%;
+    width: 85%;
     height: auto;
-    border: solid 4px red;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    background-color: lightgray; }
+    background-color: lightgray;
+    margin: 125px auto;
+    position: absolute;
+    z-index: -1; }
     .card__all__recette {
       width: 35vh;
       height: auto;
