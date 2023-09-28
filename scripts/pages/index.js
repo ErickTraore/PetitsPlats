@@ -1,60 +1,60 @@
-import Api from "../api/Api.js";
+import { displayRecipes } from "./DisplayRecipes.js"
+import { getItems } from "./getData.js"
+import { reqInputIngredient } from "./searchingredients.js"
+import { reqInputAppareil } from "./searchappareils.js"
+import { reqInputUstensil } from "./searchustensils.js"
 
- let allRecipes = [];
- // Permet de récuperer toutes les données de l'api
-   export async function getItems() {
-            const itemsApi = new Api('data/recipes.json')
-            const items = await itemsApi.get()
-            allRecipes = items;
-        return ({
-            items })
-    }
-    // On affiche toutes les données (recettes') grace à l'utilisation du design patern factory
-    async function  getDataCard(data) {
-      const cardSection = document.querySelector(".card__all");
-      data.forEach((card) => {
-        console.log('card',card);
-        const cardModel = cardFactory(card);
-        const makeCardDOM = cardModel.makeCardDOM();
-        cardSection.appendChild(makeCardDOM);
-      });
-    }
-    async function init() {
-        // Récupère les datas des recipes
-        const { items } = await getItems();
-        const dataCard = items.recipes;
-        // console.log(dataCard);
-        getDataCard(dataCard)
-      };
-      init();
-      const inputSearch = document.getElementById('search');
   
-      inputSearch.addEventListener('input', (event) => {
-        let dataInput = event.target.value.toLowerCase();
-        console.log(dataInput);
-        const recipesDatas = allRecipes.recipes;
-        console.log(recipesDatas);
-        let vCard = [];
+// Récupère les datas des recipes
+const { items } = await getItems();
+const dataCard = items.recipes; //Liste de toutes les recettes.
+     console.log(dataCard);
+// Affiche toutes les recettes:  "dataCard"
+  displayRecipes(dataCard)
+   
+// Affiche les recettes  triées avec l'input 1: vCard"
+// Cette phase ne gère pas les ingredients directement, mais les gère pour pouvoir obtenir uniquement les recettes liés à certains ingredients.
+    const inputSearch = document.getElementById('search');
+    inputSearch.addEventListener('input', (event) => {
+    let dataInput = event.target.value.toLowerCase();
+    console.log(dataInput);
+    let vCard = [];
         
     
-        recipesDatas.forEach((data => { 
-          let tableIngredients = "";
-          tableIngredients  = data.ingredients.map(ingredient => {
-            return ingredient.ingredient
-          }).join(' ')
-          console.log(tableIngredients)
-          if( data.name.toLowerCase().includes(dataInput) || data.description.toLowerCase().includes(dataInput) || tableIngredients.toLowerCase().includes(dataInput) 
-          ){
-            console.log('Ici il y a égalité');
-            vCard.push(data);         
-            // console.log(vCard);
-            }
-         console.log('Ici cela est différent');
-        }
-        ));
-        document.querySelector ('.card__all').innerHTML = '';
-        getDataCard(vCard);
-  
-        });
+  dataCard.forEach((data => { 
+    let tableIngredients = "";
+    tableIngredients = data.ingredients.map(ingredient => {
+      return ingredient.ingredient
+  }).join(' ')
+      if( data.name.toLowerCase().includes(dataInput) || data.description.toLowerCase().includes(dataInput) || tableIngredients.toLowerCase().includes(dataInput) 
+   ){
+     vCard.push(data); 
+   }
+}
+));
+     console.log(dataCard);
+     console.log(vCard);
+  document.querySelector ('.card__all').innerHTML = '';
+  displayRecipes(vCard);
+  reqInputIngredient(vCard);
+  reqInputAppareil(vCard);
+  reqInputUstensil(vCard);
+});
 
-
+export const filterByIngredient = (ingredient) => {
+  let vCard = []
+  dataCard.forEach((data) => { 
+    let tableIngredients = "";
+    tableIngredients = data.ingredients.map(ingredient => {
+      return ingredient.ingredient
+    }).join(' ')
+    if(tableIngredients.toLowerCase().includes(ingredient) ){
+      vCard.push(data); 
+    }
+  })
+  document.querySelector ('.card__all').innerHTML = '';
+  displayRecipes(vCard);
+  reqInputIngredient(vCard);
+  reqInputAppareil(vCard);
+  reqInputUstensil(vCard);
+}

@@ -1,12 +1,14 @@
 .mystyle {
     // visibility: hidden;
-    }
+}
+
 .myicon {
     width: auto;
     height: auto;
     margin: auto 10px;
     transform: rotate(180deg);
-   }
+}
+
 .card {
     width: auto;
     height: auto;
@@ -27,6 +29,7 @@
             flex-direction: row;
             justify-content: space-between;
             border: solid 3px blue;
+
             &__columnOne {
                 width: auto;
                 height: auto;
@@ -65,13 +68,12 @@
 
                     &__modal {
                         width: auto;
-                        height: 100%;
-                        // display: flex;
+                        height: auto;
+                        //display: flex;
                         display: none;
-                        justify-content: space-between;
+                        border: solid 3px rgb(69, 41, 229);
                         flex-direction: column;
-                        border: solid 3px black;
-                       
+
                         &__input {
                             position: relative;
                             width: auto;
@@ -89,19 +91,22 @@
                                 align-items: center;
                             }
                         }
+
                         &__list {
                             button {
-                            border: none;
-                            background-color: white;
-                            display: block;
-                            &.active {
-                               background-color: yellow;     
-                            }
+                                border: none;
+                                background-color: white;
+                                display: block;
+
+                                &.active {
+                                    background-color: yellow;
+                                }
                             }
                         }
                     }
                 }
             }
+
             &__columnTwo {
                 width: auto;
                 height: auto;
@@ -163,14 +168,16 @@
                                 align-items: center;
                             }
                         }
+
                         &__list {
                             button {
-                            border: none;
-                            background-color: white;
-                            display: block;
-                            &.active {
-                               background-color: yellow;     
-                            }
+                                border: none;
+                                background-color: white;
+                                display: block;
+
+                                &.active {
+                                    background-color: yellow;
+                                }
                             }
                         }
                     }
@@ -238,20 +245,23 @@
                                 align-items: center;
                             }
                         }
+
                         &__list {
                             button {
-                            border: none;
-                            background-color: white;
-                            display: block;
-                            &.active {
-                               background-color: yellow;     
-                            }
+                                border: none;
+                                background-color: white;
+                                display: block;
+
+                                &.active {
+                                    background-color: yellow;
+                                }
                             }
                         }
                     }
                 }
             }
         }
+
         &__todolist {
             width: 80%;
             height: 100%;
@@ -259,6 +269,7 @@
             border: solid 4px red;
             display: flex;
             margin: auto auto;
+
             &__content {
                 position: relative;
                 width: auto;
@@ -274,8 +285,10 @@
                     height: 80%;
                     display: flex;
                     margin: 0px 12px 0px 6px;
-                    
-                }  &__delete {
+
+                }
+
+                &__delete {
                     position: absolute;
                     width: 12px;
                     height: 12px;
@@ -288,7 +301,7 @@
                     align-items: center;
                     top: 11px;
                     right: 0px;
-                    
+
                 }
             }
         }
@@ -433,31 +446,34 @@
         }
     }
 }
+
 .toggle-up {
     animation-name: toggle-up;
     animation-delay: 0.25s;
     animation-duration: 0.75;
     animation-fill-mode: forwards;
 }
+
 .toggle-down {
     animation-name: toggle-down;
     animation-delay: 0.25s;
     animation-duration: 0.75;
     animation-fill-mode: forwards;
 }
+
 /* animation */
 @keyframes toggle-up {
     100% {
         transform: rotate(180deg);
     }
 }
+
 @keyframes toggle-down {
     100% {
         transform: rotate(180deg);
     }
 }
-.card {
-    .test-nav{
 
-    }
+.card {
+    .test-nav {}
 }

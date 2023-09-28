@@ -1,17 +1,12 @@
-function navingFactory (data) {
+export function navingFactory(data, dataItem ) {
   console.log (data);
+    const itemlist = document.createElement ('button');
+    itemlist.setAttribute("class", dataItem);
 
-  function makeNavingDOM () {
-    const itemlist = document.createElement ('div');
-    // itemlist.classList.add (
-    //   'card__header__naving__columnOne__header__modal__list__item'
-    // );
-      itemlist.classList.add (
-        'naving'
-        );
+    function makeNavingDOM () {
     itemlist.innerHTML = data;
-
     return itemlist;
   }
+
   return {makeNavingDOM};
 }

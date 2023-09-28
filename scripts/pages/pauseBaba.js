@@ -7,17 +7,120 @@ let dataItem = 'card__header__naving__columnOne__header__modal__list__button';
 let todoList = [];
 console.log ('Voici mon point de départ');
 let recipes = [];
+let tableTampon = [];
 let allIngredients;
-let isVisible = false;
 
 // //-------1
 // // récupération des données(toutes les recttes) pour le traitement de la page.
 
 const dataRecipes = await getItems ();
 recipes = dataRecipes.items.recipes;
+// let tableRecipes = recipes;
+// let ingredientsDisplay = [];
+
+// function clickUptadeTableList (data) {
+//   console.log('Je suis un YANKEE');
+//   console.log (data);
+  
+//   console.log (tableList);
+//  data.classList.add ('active');
+
+//   if (tableList.includes (data.innerHTML) === false) {
+//         console.log ('click', data.innerHTML);
+//         tableList.push (data.innerHTML);
+//         // data.classList.add ('active');
+//         // affichage de la tableList.
+//         const todoList = document.querySelector ('.card__header__todolist');
+//         console.log (todoList);
+//         todoList.innerHTML = tableList
+//           .map (element => {
+//             return `<div class="card__header__todolist__content"> 
+//                              <div class="card__header__todolist__content__list"> ${element} </div>
+//                              <div class="card__header__todolist__content__delete"> x </div>
+//                        </div>`;
+//           })
+//           .join (' ');
+//           console.log(tableList);
+//           displayIngredients (tableList, tableRecipes, data)
+//       }
+
+// }
+// function displayIngredients (tableList, tableRecipes, data) {
+// console.log('tableRecipes', tableRecipes);
+//   tableTampon = tableRecipes;
+//   tableList.forEach(itemList => {
+//   ingredientsDisplay = [];
+//   tableTampon.forEach(data => {
+//     let tableIngredients = '';
+//     tableIngredients = data.ingredients
+//       .map (ingredient => {
+//         return ingredient.ingredient;
+//       })
+//       .join (' ');
+
+//     if (tableIngredients.toLowerCase ().includes (itemList)) {
+//       ingredientsDisplay.push (data);
+//     }
+//   });
+//   tableTampon =  ingredientsDisplay;
+//   console.log(tableTampon);
+
+// })
+//   document.querySelector ('.card__header__naving__columnOne__header__modal__list').innerHTML = '';
+//   document.querySelector ('.card__all').innerHTML = '';
+//   allIngredients = listIngredients (tableTampon);
+//   console.log('tableList', tableList);
+//   console.log(allIngredients);
+//   allIngredients.forEach(oneIngredient =>{
+//     tableList.forEach(oneTableList =>{
+//       if(oneTableList == oneIngredient){
+//         console.log(oneTableList);
+//         console.log(oneIngredient);
+//         console.log(data);
+//         // let dataActive = document.querySelector('.card__header__naving__columnOne__header__modal__list__button');
+//         // dataActive.classList.add ('active');
+//         console.log(data);
+     
+
+//       }
+//     })
+//   })
+//     const buttons = document.querySelectorAll (
+//           '.card__header__naving__columnOne__header__modal__list__button'
+//         );
+//         const buttonsArray = [...buttons];
+//         buttonsArray.forEach (item => {
+//           console.log (item);
+//           item.addEventListener ('click', function () {
+//             console.log(item.innerHTML);
+//             if (tableList.includes (item.innerHTML) === false) {
+//                   console.log ('click', item.innerHTML);
+//                   tableList.push (item.innerHTML);
+//                   // item.classList.add ('active');
+//                   // affichage de la tableList.
+//                   const todoList = document.querySelector ('.card__header__todolist');
+//                   console.log (todoList);
+//                   todoList.innerHTML = tableList
+//                     .map (element => {
+//                       return `<div class="card__header__todolist__content"> 
+//                                        <div class="card__header__todolist__content__list"> ${element} </div>
+//                                        <div class="card__header__todolist__content__delete"> x </div>
+//                                  </div>`;
+//                     })
+//                     .join (' ');
+//             console.log('tableList', tableList);
+
+//             }
+
+//             // executeClick (item); ??????
+//           });
+//         });
 
 
-function executeClick (data) { 
+  
+// }
+
+function executeClick (data) {
     console.log (data);
 
   if (todoList.includes (data.innerHTML) === false) {
@@ -37,6 +140,7 @@ function executeClick (data) {
       })
       .join (' ');
       console.log(todoList);
+  // displayIngredients (tableList, recipes);
 
   }
 
@@ -47,17 +151,25 @@ function executeClick (data) {
 export function reqInputIngredient (data) {
   let test = false;
   // Mise en place du click d'ouverture ou de fermeture de la modal "Ingredients", avec création de l'input et de ses enfants
-  const icon = document.querySelector ('.card__header__naving__columnOne__header__title');
-  const activeDisplay = document.querySelector ('.card__header__naving__columnOne__header__modal');
-  const iconup = document.querySelector ('.card__header__naving__columnOne__header__title__img');
-
+  const icon = document.querySelector (
+    '.card__header__naving__columnOne__header__title'
+  );
+  
+  const activeDisplay = document.querySelector (
+    '.card__header__naving__columnOne__header__modal'
+  );
   icon.addEventListener ('click', function () {
-    let allIngredients;
-    isVisible = !isVisible
-    console.log(isVisible);
-    isVisible ? activeDisplay.style.display = "flex"  : activeDisplay.style.display = "none" ; 
+    activeDisplay.style.display = "flex"
+    test = !test;
+    const iconup = document.querySelector (
+      '.card__header__naving__columnOne__header__title__img'
+    );
     iconup.classList.toggle ('myicon');
   })
+  //icon.addEventListener ('click', function () {
+    // const activeDisplay = document.querySelector (
+    //   '.card__header__naving__columnOne__header__modal'
+    // );
     const valuehtml = `
       <div class='card__header__naving__columnOne__header__modal__input'>
         <input type='text' id='searchIngredients' class='card__header__naving__columnOne__header__modal__input__content'/>
@@ -65,7 +177,13 @@ export function reqInputIngredient (data) {
        </div>
        <div class='card__header__naving__columnOne__header__modal__list'>
        </div>`;
+
+    // Création de l'input général et de la liste correspondant à ce input.
+    // if (test) {
+      // test pour activer le déroulement de lafonctionnalité "INGREDIENTS".
+      console.log ('test actif');
       activeDisplay.innerHTML = valuehtml;
+      console.log (data);
       listIngredients (data);
 
       const inputIngredients = document.getElementById ('searchIngredients');

@@ -9,10 +9,11 @@
   height: auto;
   display: flex; }
   .card__header {
-    width: auto;
+    width: 75%;
     height: auto;
     display: flex;
-    justify-content: flex-start; }
+    flex-direction: column;
+    justify-content: center; }
     .card__header__naving {
       width: auto;
       height: 100%;
@@ -51,10 +52,11 @@
               margin: auto 10px; }
           .card__header__naving__columnOne__header__modal {
             width: auto;
-            height: auto;
-            display: flex;
-            border: solid 3px #4529e5;
-            flex-direction: column; }
+            height: 100%;
+            display: none;
+            justify-content: space-between;
+            flex-direction: column;
+            border: solid 3px black; }
             .card__header__naving__columnOne__header__modal__input {
               position: relative;
               width: auto;
@@ -69,6 +71,12 @@
                 display: flex;
                 justify-content: center;
                 align-items: center; }
+            .card__header__naving__columnOne__header__modal__list button {
+              border: none;
+              background-color: white;
+              display: block; }
+              .card__header__naving__columnOne__header__modal__list button.active {
+                background-color: yellow; }
       .card__header__naving__columnTwo {
         width: auto;
         height: auto;
@@ -117,6 +125,12 @@
                 display: flex;
                 justify-content: center;
                 align-items: center; }
+            .card__header__naving__columnTwo__header__modal__list button {
+              border: none;
+              background-color: white;
+              display: block; }
+              .card__header__naving__columnTwo__header__modal__list button.active {
+                background-color: yellow; }
       .card__header__naving__columnThree {
         width: auto;
         height: auto;
@@ -165,6 +179,45 @@
                 display: flex;
                 justify-content: center;
                 align-items: center; }
+            .card__header__naving__columnThree__header__modal__list button {
+              border: none;
+              background-color: white;
+              display: block; }
+              .card__header__naving__columnThree__header__modal__list button.active {
+                background-color: yellow; }
+    .card__header__todolist {
+      width: 80%;
+      height: 100%;
+      display: flex;
+      border: solid 4px red;
+      display: flex;
+      margin: auto auto; }
+      .card__header__todolist__content {
+        position: relative;
+        width: auto;
+        height: 90%;
+        display: flex;
+        margin: auto;
+        border: 1px solid black;
+        border-radius: 10px 10px 10px 10px; }
+        .card__header__todolist__content__list {
+          width: auto;
+          height: 80%;
+          display: flex;
+          margin: 0px 12px 0px 6px; }
+        .card__header__todolist__content__delete {
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          display: flex;
+          margin-bottom: 18px;
+          background-color: red;
+          border: 1px solid black;
+          border-radius: 50%;
+          justify-content: center;
+          align-items: center;
+          top: 11px;
+          right: 0px; }
   .card__all {
     width: 100%;
     height: auto;
