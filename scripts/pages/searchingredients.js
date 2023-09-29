@@ -8,7 +8,6 @@ let todoList = [];
 console.log ('Voici mon point de départ');
 let recipes = [];
 let allIngredients;
-let isVisible = false;
 
 // //-------1
 // // récupération des données(toutes les recttes) pour le traitement de la page.
@@ -23,7 +22,7 @@ function executeClick (data) {
   if (todoList.includes (data.innerHTML) === false) {
     console.log ('click', data.innerHTML);
     todoList.push (data.innerHTML);
-    filterByIngredient(data.innerHTML);
+    filterByIngredient(todoList);
     data.classList.add ('active');
     // affichage de la todoList.
     const todoListHTML = document.querySelector ('.card__header__todolist');
@@ -41,23 +40,23 @@ function executeClick (data) {
   }
 
 }
+// Mise en place du click d'ouverture ou de fermeture de la modal "Ingredients", avec création de l'input et de ses enfants
 
+const icon = document.querySelector ('.card__header__naving__columnOne__header__title');
+const activeDisplay = document.querySelector ('.card__header__naving__columnOne__header__modal');
+const iconup = document.querySelector ('.card__header__naving__columnOne__header__title__img');
+icon.addEventListener ('click', function () {
+  let allIngredients;
+  activeDisplay.classList.contains("active") ? activeDisplay.classList.remove("active")  : activeDisplay.classList.add("active");
+  iconup.classList.toggle ('myicon');
+})
 // //-------2
 // // Mise en place de la fonctionnalité INGREDIENTS
 export function reqInputIngredient (data) {
   let test = false;
   // Mise en place du click d'ouverture ou de fermeture de la modal "Ingredients", avec création de l'input et de ses enfants
-  const icon = document.querySelector ('.card__header__naving__columnOne__header__title');
-  const activeDisplay = document.querySelector ('.card__header__naving__columnOne__header__modal');
-  const iconup = document.querySelector ('.card__header__naving__columnOne__header__title__img');
 
-  icon.addEventListener ('click', function () {
-    let allIngredients;
-    isVisible = !isVisible
-    console.log(isVisible);
-    isVisible ? activeDisplay.style.display = "flex"  : activeDisplay.style.display = "none" ; 
-    iconup.classList.toggle ('myicon');
-  })
+  console.log(icon)
     const valuehtml = `
       <div class='card__header__naving__columnOne__header__modal__input'>
         <input type='text' id='searchIngredients' class='card__header__naving__columnOne__header__modal__input__content'/>

@@ -57,6 +57,8 @@
             justify-content: space-between;
             flex-direction: column;
             border: solid 3px black; }
+            .card__header__naving__columnOne__header__modal.active {
+              display: flex; }
             .card__header__naving__columnOne__header__modal__input {
               position: relative;
               width: auto;

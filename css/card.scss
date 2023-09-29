@@ -71,6 +71,9 @@
                         justify-content: space-between;
                         flex-direction: column;
                         border: solid 3px black;
+                        &.active {
+                            display: flex;
+                        }
                        
                         &__input {
                             position: relative;
