@@ -9,39 +9,37 @@
   height: auto;
   display: flex; }
   .card__header {
-    width: 75%;
+    width: 100%;
     height: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center; }
+    background: #D9D9D9;
+    flex-direction: column-reverse; }
     .card__header__naving {
-      width: auto;
+      width: 65%;
       height: 100%;
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;
-      justify-content: space-between;
-      border: solid 3px blue; }
+      justify-content: space-between; }
       .card__header__naving__columnOne {
         width: auto;
         height: auto;
         display: flex;
-        border: solid 3px green;
         justify-content: center;
-        margin: 20px auto; }
+        margin: 20px auto;
+        background-color: white;
+        border-radius: 8px 8px 8px 8px; }
         .card__header__naving__columnOne__header {
           width: auto;
           height: auto;
           display: flex;
           justify-content: space-between;
-          flex-direction: column;
-          border: solid 3px #ba17c3; }
+          flex-direction: column; }
           .card__header__naving__columnOne__header__title {
             width: auto;
-            height: auto;
+            height: 40px;
             display: flex;
-            justify-content: space-between;
-            border: solid 3px orange; }
+            justify-content: space-between; }
             .card__header__naving__columnOne__header__title p {
               width: auto;
               height: auto;
@@ -55,8 +53,7 @@
             height: 100%;
             display: none;
             justify-content: space-between;
-            flex-direction: column;
-            border: solid 3px black; }
+            flex-direction: column; }
             .card__header__naving__columnOne__header__modal.active {
               display: flex; }
             .card__header__naving__columnOne__header__modal__input {
@@ -78,14 +75,16 @@
               background-color: white;
               display: block; }
               .card__header__naving__columnOne__header__modal__list button.active {
-                background-color: yellow; }
+                background-color: #FFD15B; }
       .card__header__naving__columnTwo {
         width: auto;
         height: auto;
         display: flex;
-        border: solid 3px black;
         justify-content: center;
-        margin: 20px auto; }
+        margin: 20px auto;
+        background-color: white;
+        align-items: flex-end;
+        border-radius: 8px 8px 8px 8px; }
         .card__header__naving__columnTwo__header {
           width: auto;
           height: auto;
@@ -94,10 +93,10 @@
           flex-direction: column; }
           .card__header__naving__columnTwo__header__title {
             width: auto;
-            height: auto;
+            height: 40px;
             display: flex;
             justify-content: space-between;
-            border: solid 3px orange; }
+            margin: auto auto; }
             .card__header__naving__columnTwo__header__title p {
               width: auto;
               height: auto;
@@ -111,8 +110,7 @@
             height: 100%;
             display: flex;
             justify-content: space-between;
-            flex-direction: column;
-            border: solid 3px black; }
+            flex-direction: column; }
             .card__header__naving__columnTwo__header__modal__input {
               position: relative;
               width: auto;
@@ -132,14 +130,16 @@
               background-color: white;
               display: block; }
               .card__header__naving__columnTwo__header__modal__list button.active {
-                background-color: yellow; }
+                background-color: #FFD15B; }
       .card__header__naving__columnThree {
         width: auto;
         height: auto;
         display: flex;
-        border: solid 3px #d8c731;
         justify-content: center;
-        margin: 20px auto; }
+        margin: 20px auto;
+        background-color: white;
+        border-radius: 8px 8px 8px 8px;
+        align-items: flex-end; }
         .card__header__naving__columnThree__header {
           width: auto;
           height: auto;
@@ -148,14 +148,14 @@
           flex-direction: column; }
           .card__header__naving__columnThree__header__title {
             width: auto;
-            height: auto;
+            height: 40px;
             display: flex;
-            justify-content: space-between;
-            border: solid 3px orange; }
+            justify-content: space-between; }
             .card__header__naving__columnThree__header__title p {
               width: auto;
               height: auto;
-              margin: auto 5px; }
+              margin: auto 5px;
+              text-align: center; }
             .card__header__naving__columnThree__header__title img {
               width: auto;
               height: auto;
@@ -165,8 +165,7 @@
             height: 100%;
             display: flex;
             justify-content: space-between;
-            flex-direction: column;
-            border: solid 3px black; }
+            flex-direction: column; }
             .card__header__naving__columnThree__header__modal__input {
               position: relative;
               width: auto;
@@ -186,27 +185,39 @@
               background-color: white;
               display: block; }
               .card__header__naving__columnThree__header__modal__list button.active {
-                background-color: yellow; }
+                background-color: #FFD15B; }
+    .card__header__total {
+      width: 20%;
+      height: auto;
+      display: flex;
+      margin: auto auto;
+      flex-direction: row;
+      justify-content: flex-end; }
     .card__header__todolist {
-      width: 80%;
+      width: 95%;
       height: 100%;
       display: flex;
-      border: solid 4px red;
-      display: flex;
-      margin: auto auto; }
+      flex-wrap: wrap;
+      margin: auto auto;
+      justify-content: flex-start;
+      border: solid 2px #737171;
+      border-radius: 10px;
+      margin: 0px 0px 15px 0px; }
       .card__header__todolist__content {
         position: relative;
         width: auto;
-        height: 90%;
+        height: 100%;
         display: flex;
-        margin: auto;
+        margin: 10px;
         border: 1px solid black;
-        border-radius: 10px 10px 10px 10px; }
+        border-radius: 8px 8px 8px 8px;
+        background-color: #FFD15B; }
         .card__header__todolist__content__list {
           width: auto;
           height: 80%;
           display: flex;
-          margin: 0px 12px 0px 6px; }
+          margin: 0px 12px 0px 6px;
+          background-color: #FFD15B; }
         .card__header__todolist__content__delete {
           position: absolute;
           width: 12px;
@@ -223,12 +234,11 @@
   .card__all {
     width: 100%;
     height: auto;
-    border: solid 4px red;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    background-color: lightgray; }
+    background-color: #D9D9D9; }
     .card__all__recette {
       width: 35vh;
       height: auto;
@@ -261,7 +271,7 @@
           height: auto;
           display: flex;
           justify-content: center;
-          background-color: yellow;
+          background-color: #FFD15B;
           border-radius: 2vh;
           margin-top: 2vh;
           margin-right: 4vh;

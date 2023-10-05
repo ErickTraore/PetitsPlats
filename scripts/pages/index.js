@@ -60,6 +60,8 @@ export const filterByIngredient = (ingredients) => {
       vCard.push(data); 
     }
   })
+  console.log(vCard);
+  console.log(ingredients);
   document.querySelector ('.card__all').innerHTML = '';
   displayRecipes(vCard);
   reqInputIngredient(vCard);

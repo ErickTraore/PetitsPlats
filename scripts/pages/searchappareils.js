@@ -38,6 +38,7 @@ else {
   displayRecipes(recipesWithAppareils);               
   }
 function executeClick (data) {
+  console.log (data);
   function removeItemTableList(dataIndex){
     tableList.splice(dataIndex, 1);
  }
@@ -70,7 +71,7 @@ const listContent = document.querySelectorAll (".card__header__todolist__content
     const btns = document.querySelectorAll (".card__header__todolist__content__delete");
     const btnsArray = [...btns];
     btnsArray.forEach ((item, index) => {    //1ére boucle pour énumérer les élements choisis afin de repérer celui qui sera clicqué.
-      item.addEventListener ('click', function (event) {
+      item.addEventListener ('click', function () {
         let dataDelete = `${index}`;
         console.log(item);
         let nameSelected = item.dataset.name

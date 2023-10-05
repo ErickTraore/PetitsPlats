@@ -13,42 +13,41 @@
     display: flex;
 
     &__header {
-        width: 75%;
+        width: 100%;
         height: auto;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        background: #D9D9D9;
+        flex-direction: column-reverse;
+
 
         &__naving {
-            width: auto;
+            width: 65%;
             height: 100%;
             display: flex;
             flex-wrap: wrap;
             flex-direction: row;
             justify-content: space-between;
-            border: solid 3px blue;
+            // border: solid 3px blue;
             &__columnOne {
                 width: auto;
                 height: auto;
                 display: flex;
-                border: solid 3px green;
                 justify-content: center;
                 margin: 20px auto;
-
+                background-color: white;
+                border-radius: 8px 8px 8px 8px;
                 &__header {
                     width: auto;
                     height: auto;
                     display: flex;
                     justify-content: space-between;
                     flex-direction: column;
-                    border: solid 3px rgb(186, 23, 195);
 
                     &__title {
                         width: auto;
-                        height: auto;
+                        height: 40px;
                         display: flex;
                         justify-content: space-between;
-                        border: solid 3px orange;
 
                         p {
                             width: auto;
@@ -63,45 +62,43 @@
                         }
                     }
 
-                    &__modal {
-                        width: auto;
-                        height: 100%;
-                        // display: flex;
-                        display: none;
-                        justify-content: space-between;
-                        flex-direction: column;
-                        border: solid 3px black;
-                        &.active {
-                            display: flex;
-                        }
-                       
-                        &__input {
-                            position: relative;
+                        &__modal {
                             width: auto;
-                            height: auto;
-                            display: flex;
-                            border: solid 3px rgb(179, 16, 16);
-
-                            span {
-                                position: absolute;
-                                right: 8px;
-                                width: 10%;
-                                height: 100%;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                            }
-                        }
-                        &__list {
-                            button {
-                            border: none;
-                            background-color: white;
-                            display: block;
+                            height: 100%;
+                            display: none;
+                            justify-content: space-between;
+                            flex-direction: column;
                             &.active {
-                               background-color: yellow;     
+                                display: flex;
                             }
+                        
+                            &__input {
+                                position: relative;
+                                width: auto;
+                                height: auto;
+                                display: flex;
+                                border: solid 3px rgb(179, 16, 16);
+
+                                span {
+                                    position: absolute;
+                                    right: 8px;
+                                    width: 10%;
+                                    height: 100%;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
                             }
-                        }
+                            &__list {
+                                button {
+                                border: none;
+                                background-color: white;
+                                display: block;
+                                &.active {
+                                background-color: #FFD15B;     
+                                }
+                                }
+                            }
                     }
                 }
             }
@@ -109,10 +106,11 @@
                 width: auto;
                 height: auto;
                 display: flex;
-                border: solid 3px black;
                 justify-content: center;
                 margin: 20px auto;
-
+                background-color: white;
+                align-items: flex-end;
+                border-radius: 8px 8px 8px 8px;
                 &__header {
                     width: auto;
                     height: auto;
@@ -122,11 +120,10 @@
 
                     &__title {
                         width: auto;
-                        height: auto;
+                        height: 40px;
                         display: flex;
                         justify-content: space-between;
-                        border: solid 3px orange;
-
+                        margin: auto auto ;
                         p {
                             width: auto;
                             height: auto;
@@ -147,7 +144,7 @@
                         display: flex;
                         justify-content: space-between;
                         flex-direction: column;
-                        border: solid 3px black;
+                        // border: solid 3px black;
 
                         &__input {
                             position: relative;
@@ -172,7 +169,7 @@
                             background-color: white;
                             display: block;
                             &.active {
-                               background-color: yellow;     
+                               background-color: #FFD15B;   
                             }
                             }
                         }
@@ -184,9 +181,12 @@
                 width: auto;
                 height: auto;
                 display: flex;
-                border: solid 3px rgb(216, 199, 49);
                 justify-content: center;
                 margin: 20px auto;
+                background-color: white;
+                border-radius: 8px 8px 8px 8px;
+                align-items: flex-end;
+
 
                 &__header {
                     width: auto;
@@ -197,15 +197,14 @@
 
                     &__title {
                         width: auto;
-                        height: auto;
+                        height: 40px;
                         display: flex;
                         justify-content: space-between;
-                        border: solid 3px orange;
-
                         p {
                             width: auto;
                             height: auto;
                             margin: auto 5px;
+                            text-align:center;
                         }
 
                         img {
@@ -222,7 +221,7 @@
                         display: flex;
                         justify-content: space-between;
                         flex-direction: column;
-                        border: solid 3px black;
+                        // border: solid 3px black;
 
                         &__input {
                             position: relative;
@@ -247,7 +246,7 @@
                             background-color: white;
                             display: block;
                             &.active {
-                               background-color: yellow;     
+                               background-color: #FFD15B;    
                             }
                             }
                         }
@@ -255,21 +254,34 @@
                 }
             }
         }
-        &__todolist {
-            width: 80%;
-            height: 100%;
-            display: flex;
-            border: solid 4px red;
+        &__total {
+            width: 20%;
+            height: auto;
             display: flex;
             margin: auto auto;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+        &__todolist {
+            width: 95%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            margin: auto auto;
+            justify-content: flex-start;
+            border: solid 2px rgb(115, 113, 113);
+            border-radius: 10px;
+            margin: 0px 0px 15px 0px;
+
             &__content {
                 position: relative;
                 width: auto;
-                height: 90%;
+                height: 100%;
                 display: flex;
-                margin: auto;
+                margin: 10px;
                 border: 1px solid black;
-                border-radius: 10px 10px 10px 10px;
+                border-radius: 8px 8px 8px 8px;
+                background-color: #FFD15B;   
 
 
                 &__list {
@@ -277,6 +289,7 @@
                     height: 80%;
                     display: flex;
                     margin: 0px 12px 0px 6px;
+                    background-color: #FFD15B;
                     
                 }  &__delete {
                     position: absolute;
@@ -300,12 +313,14 @@
     &__all {
         width: 100%;
         height: auto;
-        border: solid 4px red;
+        // border: solid 4px red;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-around;
-        background-color: lightgray;
+        background-color: #D9D9D9;
+        ;
+
 
         &__recette {
             width: 35vh;
@@ -346,7 +361,7 @@
                     height: auto;
                     display: flex;
                     justify-content: center;
-                    background-color: yellow;
+                    background-color: #FFD15B;
                     border-radius: 2vh;
                     margin-top: 2vh;
                     margin-right: 4vh;
@@ -457,10 +472,5 @@
 @keyframes toggle-down {
     100% {
         transform: rotate(180deg);
-    }
-}
-.card {
-    .test-nav{
-
     }
 }
