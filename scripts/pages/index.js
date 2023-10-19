@@ -19,7 +19,6 @@ inputSearch.addEventListener('input', (event) => {
 let dataInput = event.target.value.toLowerCase();
 console.log(dataInput);
 let vCard = [];
-        
     
 dataCard.forEach((data => { 
   let tableIngredients = "";
@@ -32,8 +31,6 @@ dataCard.forEach((data => {
   }
 }
 ));
-     console.log(dataCard);
-     console.log(vCard);
     document.querySelector ('.card__all').innerHTML = '';
     displayRecipes(vCard);
     reqInputIngredient(vCard);
@@ -41,23 +38,24 @@ dataCard.forEach((data => {
     reqInputUstensil(vCard);
 });
 
-export const filterByIngredient = (ingredients) => {
+export const filterByIngredient = (ingredients) => {    // ingredients correspond à la tableList
+  console.log(ingredients);
   let vCard = []
-  dataCard.forEach((data) => { 
+  dataCard.forEach((data_ingredients) => { 
     let tableIngredients = "";
-    tableIngredients = data.ingredients.map(ingredient => {
+    tableIngredients = data_ingredients.ingredients.map(ingredient => {
       return ingredient.ingredient
     }).join(' ')
     // compte le nombre d'ingredient trouvé dans la recette
     let countIngredient = 0;
     ingredients.forEach((ingredient) => {
-      if(tableIngredients.toLowerCase().includes(ingredient) ){
+      if(tableIngredients.toLowerCase().includes(ingredient) ){  // tableIngredients correspond aux ingredients de chaque recette.
         countIngredient++;
       }
     })
     // si le nombre d'ingredient trouvé est égale au nombre d'ingredient de la recette, alors on ajoute la recette dans le tableau vCard
     if(countIngredient === ingredients.length){
-      vCard.push(data); 
+      vCard.push(data_ingredients); // récupère toutes les recettes qui contiennes tous les ingredients choisi par l'utilisateur
     }
   })
   console.log(vCard);
@@ -68,3 +66,14 @@ export const filterByIngredient = (ingredients) => {
   reqInputAppareil(vCard);
   reqInputUstensil(vCard);
 }
+
+// ici, je dois filtrer les ingredients et les ustensils.
+export const filterByAppareil = (appareils) => {    // ingredients correspond à la tableList
+  console.log("ici, je dois filtrer les ingredients et les ustensils");
+  console.log(appareils);
+  console.log(dataCard);
+
+}
+
+
+

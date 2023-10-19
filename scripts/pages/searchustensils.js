@@ -1,8 +1,12 @@
 import { displayRecipes } from "./DisplayRecipes.js"
 import { getItems } from "./getData.js";
 import { goToTheDOM } from "./DisplayNaving.js";
+import { reqInputIngredient } from "./searchingredients.js";
+import { reqInputAppareil } from "./searchappareils.js";
+
+
 let dataElement = ".card__header__naving__columnThree__header__modal__list"
-let dataItem = "card__header__naving__columnThree__header__modal__list__button"
+let dataItem = "card__header__naving__columnThree__header__modal__list__button";
 let tableList = [];
 let recipes = [];
 
@@ -10,23 +14,11 @@ let recipes = [];
 const dataRecipes = await getItems ();
 recipes = dataRecipes.items.recipes;
 
-function displayUstensils(data1, data2){
-    let recipesWithUstensils = [];
-    data2.forEach(recipe => {
-        if (data1.every(element => recipe.ustensils.includes(element))) {
-           recipesWithUstensils.push(recipe);
-        }
-    })
-    document.querySelector ('.card__all').innerHTML = '';
-    displayRecipes(recipesWithUstensils);               
-    }
 
 
 
 function executeClick (data) {
-    function removeItemTableList(dataIndex){
-       tableList.splice(dataIndex, 1);
-    }
+    
     if (tableList.includes (data.innerHTML) === false) {
       console.log ('click', data.innerHTML);
       tableList.push (data.innerHTML);
@@ -35,6 +27,7 @@ function executeClick (data) {
       const todoList = document.querySelector ('.card__header__todolist');
       console.log (todoList);
       todoList.innerHTML  = tableList
+
       .map (element => {
         return `<div class="card__header__todolist__content"> 
                      <div class="card__header__todolist__content__list"> ${element} </div>
@@ -44,6 +37,11 @@ function executeClick (data) {
       .join (' ');
 
       displayUstensils(tableList, recipes);
+      let recipesWithUstensils = displayUstensils(tableList, recipes);
+      console.log(recipesWithUstensils);
+     
+      let cardAppareils = document.querySelector('.card__header__naving__columnThree__header__modal__list')
+
 
     }
 
@@ -68,7 +66,9 @@ function executeClick (data) {
             let itemDelete = element.childNodes[1].innerHTML; // élement déjà effacer
             console.log(('itemDelete'), itemDelete);
             element.remove(); // supprime le div avec l'identifiant 'id'
-            removeItemTableList(`${index}`)
+            tableList = tableList.filter(list => list !== nameSelected)
+            // let deleteInput = document.querySelector('.card__header__naving__columnThree__header__modal__input__content');
+            // deleteInput.innerHTML = '';
             const buttons = document.querySelectorAll (  // on doit rechercher itemDelete dans la liste générale des ustensils.
                 '.card__header__naving__columnThree__header__modal__list__button'
                 );
@@ -77,22 +77,49 @@ function executeClick (data) {
                    if(nameSelected == item.innerHTML){
                     console.log("Bravo");
                     item.classList.remove('active')
-                   }
-                    else{
-                    console.log("Pas de Bravo");
+                    if(tableList.length == 0){
+                        displayRecipes(recipes);
+                        reqInputIngredient(recipes);
+                        reqInputAppareil(recipes);
+                        reqInputUstensil(recipes);
+                      } else{
+                    // console.log(tableList); // tableList = List des ustensils dans le tableau
+                    // let recipesWithUstensils =  displayUstensils(tableList, recipes);
+                    // console.log(recipesWithUstensils);
+                    // console.log("Pas de Bravo");
+                    reqInputIngredient(recipesWithUstensils);
+                    reqInputAppareil(recipesWithUstensils);
                     }
+                   }
+                   
                 })
             }
-            else{
-                console.log("Bravo cas non gérable");
-            }
+          
         })
       });
     });
   }
-  displayUstensils(recipes, tableList);
+  // data1  =  "tableList" = regroupe les ingredients sélectionné manuellement par l'utilisateur à partir de la liste générale des ingredients.
+  // data2  =  c'est la liste de toutes les recettes du site
+  function displayUstensils(data1, data2){
+    let recipesWithUstensils = [];
+    data2.forEach(recipe => {
+        if (data1.every(element => recipe.ustensils.includes(element))) {
+           recipesWithUstensils.push(recipe);
+        }
+    })
+    document.querySelector ('.card__all').innerHTML = '';
+    displayRecipes(recipesWithUstensils);
+    return recipesWithUstensils;             
+    }
 
-
+const icon = document.querySelector ('.card__header__naving__columnThree__header__title');
+const activeDisplay = document.querySelector ('.card__header__naving__columnThree__header__modal');
+const iconup = document.querySelector ('.card__header__naving__columnThree__header__title__img');
+icon.addEventListener ('click', function () {
+  activeDisplay.classList.contains("active") ? activeDisplay.classList.remove("active")  : activeDisplay.classList.add("active");
+  iconup.classList.toggle ('myicon');
+})
 
 
 // Mise en place de la fonctionnalité USTENSILS
@@ -100,13 +127,14 @@ export function reqInputUstensil(data) {
     let test = false;
 
 // Mise en place du click d'ouverture ou de fermeture de la modal: Ustensils.
-const icon = document.querySelector(".card__header__naving__columnThree__header__title");
-icon.addEventListener('click', function() {
-    test = !test;
-    const iconup = document.querySelector(".card__header__naving__columnThree__header__title__img");
-    iconup.classList.toggle("myicon");
+// const icon = document.querySelector(".card__header__naving__columnThree__header__title");
+// icon.addEventListener('click', function() {
+//     test = !test;
+//     const iconup = document.querySelector(".card__header__naving__columnThree__header__title__img");
+//     iconup.classList.toggle("myicon");
     
-    const activeDisplay = document.querySelector(".card__header__naving__columnThree__header__modal");
+//     const activeDisplay = document.querySelector(".card__header__naving__columnThree__header__modal");
+    
     const valuehtml =`
     <div class='card__header__naving__columnThree__header__modal__input'>
         <input type='text' id='searchUstensils' class='card__header__naving__columnThree__header__modal__input__content'/>
@@ -116,7 +144,6 @@ icon.addEventListener('click', function() {
     <div class='card__header__naving__columnThree__header__modal__list'>
     </div>`
 
-    if(test) {
         console.log("Ouverture de la modale");
         activeDisplay.innerHTML = valuehtml;
         listUstensils(data); 
@@ -134,63 +161,111 @@ icon.addEventListener('click', function() {
         item.setAttribute('id', "a"+`${index}`)
         item.addEventListener ('click', function () {
         executeClick (item);
-        });
-        });
-        console.log(buttons);
+       
 
-    } else {
-        console.log ('test non actif');
-        activeDisplay.innerHTML = '';
-        const todoList = document.querySelector ('.card__header__todolist');
-        console.log (todoList);
-        todoList.innerHTML = "";
-        tableList = [];
-    }
+      
+        });
+    });
+    
+    // const todoListModal = document.querySelectorAll ('.card__header__naving__columnThree__header__modal__list__button');
+    // const todoListModalArray = [...todoListModal];
+    // console.log(todoListModalArray);
+    // console.log(tableList);
+    // console.log(todoListModal.innerHTML);
 
+
+    // todoListModalArray.forEach (itemElt => {
+    //     tableList.forEach( itemTodolist => {
+    //       if(itemElt.innerHTML == itemTodolist){
+    //           itemElt.classList.add('active');
+    //       }
+    //       })
+    //     })
         // tableList regroupe les ingredients sélectionné manuellement par l'utilisateur à partir de la liste générale des ingredients.
-        const inputUstensils = document.getElementById('searchUstensils');
+    // if (tableList.length === 0) {
+    //     console.log("tableList est vide");
+    //     listUstensils(data);
+
+    // } 
     if(inputUstensils){
         inputUstensils.addEventListener('input', (event) => {
         let dataInput = event.target.value.toLowerCase();
         console.log(dataInput);
+        if(dataInput){
+            console.log("dataInput existe");
+        }else{
+            console.log("dataInput existe pas");
+            console.log(tableList);
+            if (tableList) {
+                console.log("tableList est vide");
+               let todoListModal = document.querySelectorAll ('.card__header__naving__columnThree__header__modal__list__button');
+               todoListModal.innerHTML = "";
+               let myAllUstensils = listUstensils(data);
+          
+            } 
+        }
         let vCardUstensils = [];
         let myAllUstensils = listUstensils(data);
         console.log(myAllUstensils);
         let cardUstensils = document.querySelector('.card__header__naving__columnThree__header__modal__list')
+        let lCardUstensils = document.querySelectorAll('.card__header__naving__columnThree__header__modal__list__button')
         cardUstensils.innerHTML = "";
-        myAllUstensils.forEach((dataUstensil => { 
-        let tableUstensils = "";
-        tableUstensils = dataUstensil;
-        console.log(tableUstensils);
-        console.log(tableList);
+        lCardUstensils.innerHTML = "";
 
-    if( tableUstensils.toLowerCase().includes(dataInput)) {
-        vCardUstensils.push(dataUstensil); 
-        console.log("item identique");
-    }
-}));
-        console.log(vCardUstensils);
+        myAllUstensils.forEach((dataUstensil => { 
+            let tableUstensils = "";
+            
+            tableUstensils = dataUstensil;
+            console.log(tableUstensils);
+            console.log(tableList);
+            if( tableUstensils.toLowerCase().includes(dataInput)) {
+                vCardUstensils.push(dataUstensil); 
+                console.log("item identique");
+            }
+            }));
+        let parent = document.querySelector(".card__header__naving__columnThree__header__modal__list");
+        console.log(parent); 
+        let myNodeList = parent.childNodes; 
+        let myNodeListArray = [...myNodeList];
+        console.log(myNodeListArray); 
+         
+
+        //  setTimeout(console.log(myNodeList.length), 5000);
+
+        // for (var key of myNodeList.keys()) {
+        //     console.log(key);
+        //   }
+        // vCardUstensils.forEach( itemUstensil => {
+        //     tableList.forEach( itemList => {
+        //         if(itemUstensil == itemList){
+
+        //         }
+        //     })
+        // })
         goToTheDOM(vCardUstensils, dataElement, dataItem);
         // vCardIngredients = liste brute des ingrédients préselectionnés.
         // buttons(table) = liste brute des ingrédients préselectionnés automatiquement, introduit dans le html.
         // tableList = liste des ingrédients sélectionés manuellement par l'utilisateur.
         const buttons = document.querySelectorAll ('.card__header__naving__columnThree__header__modal__list__button' );
         const buttonsArray = [...buttons];
-    buttonsArray.forEach (item => {
-    item.addEventListener ('click', function () {
-        executeClick (item);
-    });
-    });
-    })
+        buttonsArray.forEach (item => {
+        item.addEventListener ('click', function () {
+            executeClick (item);
+        });
+        });
+        })
 }
-});
+else{
+    console.log("it's mine");
 }
+};
+// }
 
 
 reqInputUstensil(recipes);
 
 // Céation de la liste des ustensils pour la création de la fonctionnalité :RECHERCHE.
-function  listUstensils(data) {
+export function  listUstensils(data) {
     const AllUstensils = [];
     data.forEach((dataItem) => {
         dataItem.ustensils.forEach((dataUstensils) => {
@@ -199,9 +274,10 @@ function  listUstensils(data) {
         if(AllUstensils.includes(theUstensils)==false){
                 AllUstensils.push(theUstensils);
             }
-        console.log(theUstensils);
         })
     })
+    console.log(AllUstensils);
+
     goToTheDOM(AllUstensils, dataElement, dataItem);
     return  AllUstensils;
 }

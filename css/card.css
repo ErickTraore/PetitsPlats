@@ -108,9 +108,11 @@
           .card__header__naving__columnTwo__header__modal {
             width: auto;
             height: 100%;
-            display: flex;
+            display: none;
             justify-content: space-between;
             flex-direction: column; }
+            .card__header__naving__columnTwo__header__modal.active {
+              display: flex; }
             .card__header__naving__columnTwo__header__modal__input {
               position: relative;
               width: auto;
@@ -163,9 +165,11 @@
           .card__header__naving__columnThree__header__modal {
             width: auto;
             height: 100%;
-            display: flex;
+            display: none;
             justify-content: space-between;
             flex-direction: column; }
+            .card__header__naving__columnThree__header__modal.active {
+              display: flex; }
             .card__header__naving__columnThree__header__modal__input {
               position: relative;
               width: auto;

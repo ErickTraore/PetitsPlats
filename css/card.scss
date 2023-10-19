@@ -141,11 +141,12 @@
                     &__modal {
                         width: auto;
                         height: 100%;
-                        display: flex;
+                        display: none;
                         justify-content: space-between;
                         flex-direction: column;
-                        // border: solid 3px black;
-
+                        &.active {
+                            display: flex;
+                        }
                         &__input {
                             position: relative;
                             width: auto;
@@ -218,11 +219,12 @@
                     &__modal {
                         width: auto;
                         height: 100%;
-                        display: flex;
+                        display: none;
                         justify-content: space-between;
                         flex-direction: column;
-                        // border: solid 3px black;
-
+                        &.active {
+                            display: flex;
+                        }
                         &__input {
                             position: relative;
                             width: auto;
