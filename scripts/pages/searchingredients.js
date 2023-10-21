@@ -15,8 +15,6 @@ const dataRecipes = await getItems ();
 recipes = dataRecipes.items.recipes;
 
 function executeClick (data) { 
- 
-
   if (tableList.includes (data.innerHTML) === false) {
     tableList.push (data.innerHTML);
    
@@ -31,6 +29,7 @@ function executeClick (data) {
                    </div>`;
       })
       .join (' ');
+      
       filterByIngredient(tableList);
     }
 
