@@ -17,8 +17,6 @@ const dataRecipes = await getItems ();
 recipes = dataRecipes.items.recipes;
 
 function executeClick (data) {
-  
-
   if (tableList.includes (data.innerHTML) === false) {
       tableList.push (data.innerHTML);
       data.classList.add ('active');
@@ -96,11 +94,6 @@ function executeClick (data) {
                       reqInputUstensil(recipesWithAppareils);
 
                     }
-                    // filterByIngredient(tableList);
-
-
-                    // displayAppareils(tableList, recipes);
-
                    }
 
                 })
@@ -154,22 +147,14 @@ icon.addEventListener ('click', function () {
   iconup.classList.toggle ('myicon');
 })
 export function reqInputAppareil(data) {
-// Mise en place du click d'ouverture ou de fermeture de la modal: Appareils, avec création de l'input et de ses enfants
-// const icon = document.querySelector(".card__header__naving__columnTwo__header__title");
-// icon.addEventListener('click', function() {
-//     test = !test;
-
-    // const iconup = document.querySelector(".card__header__naving__columnTwo__header__title__img");
-    // iconup.classList.toggle("myicon");
-    
     const valuehtml =`
     <div class='card__header__naving__columnTwo__header__modal__input'>
         <input type='text' id='searchAppareils' class='card__header__naving__columnTwo__header__modal__input__content'/>
-        <span class='glyphicon glyphicon-search'>
-        </span>
+        <span class='glyphicon glyphicon-search'></span>
+        <span id='appareilRemove' class='glyphicon glyphicon-remove'></span>
     </div>
     <div class='card__header__naving__columnTwo__header__modal__list'>
-    </div>`
+    </div>`;
    
         activeDisplay.innerHTML = valuehtml;
         listAppareils(data); 
@@ -177,8 +162,8 @@ export function reqInputAppareil(data) {
          inputAppareils.addEventListener ('input', event => {
       let dataInput = event.target.value.toLowerCase ();
       console.log ('dataInput', dataInput);
-  // let vCard = [];
-});
+
+      });
 const buttons = document.querySelectorAll (
   '.card__header__naving__columnTwo__header__modal__list__button'
 );
@@ -189,9 +174,7 @@ console.log(item);
     executeClick (item);
     // if(item.innerHTML)=
   // item.classList.add('active');
-
 // });
-
 });
 
 })
@@ -212,6 +195,20 @@ todoListModalArray.forEach (itemElt => {
        inputAppareils.addEventListener('input', (event) => {
         let dataInput = event.target.value.toLowerCase();
         console.log(dataInput);
+        if(dataInput){
+          const activeHtml = document.getElementById("appareilRemove")
+          // activeHtml.style.display = "flex";
+          console.log ("insertion d'un élément dans la recherche(input) de l'appareil");
+          console.log(activeHtml);
+         
+          activeHtml.classList.contains("active") ? activeHtml.classList.add("active")  : activeHtml.classList.add("active");
+          activeHtml.addEventListener('click', function() {
+          console.log ("clique sur remove");
+          document.getElementById('searchAppareils').value='';
+          activeHtml.classList.remove("active");
+          reqInputAppareil(data)
+          }) 
+          } 
         let vCardAppareils = [];
         let myAllAppareils = listAppareils(data);
         console.log(myAllAppareils);
@@ -236,20 +233,16 @@ todoListModalArray.forEach (itemElt => {
         '.card__header__naving__columnTwo__header__modal__list__button'
       );
       const buttonsArray = [...buttons];
-
       buttonsArray.forEach (item => {
         item.addEventListener ('click', function () {
           executeClick (item);
         });
       });
-      
     });
 }
 }
 // ExécUtion de la fonctionnalité APPAREILS pour la totalité des recettes.
-
 reqInputAppareil(recipes);
-
 
 // Céation de la liste des appareils pour la création de la fonctionnalité :RECHERCHE.
 export function  listAppareils(data) {
@@ -258,7 +251,6 @@ export function  listAppareils(data) {
         let myAppliance = dataItem.appliance;
         let theAppliance = myAppliance.toLowerCase();
         console.log(theAppliance);
-    
         if(allAppareils.includes(theAppliance)==false){
             allAppareils.push(theAppliance);
         }

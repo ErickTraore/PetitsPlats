@@ -18,8 +18,6 @@
         display: flex;
         background: #D9D9D9;
         flex-direction: column-reverse;
-
-
         &__naving {
             width: 65%;
             height: 100%;
@@ -27,157 +25,9 @@
             flex-wrap: wrap;
             flex-direction: row;
             justify-content: space-between;
-            // border: solid 3px blue;
-            &__columnOne {
-                width: auto;
-                height: auto;
-                display: flex;
-                justify-content: center;
-                margin: 20px auto;
-                background-color: white;
-                border-radius: 8px 8px 8px 8px;
-                &__header {
-                    width: auto;
-                    height: auto;
-                    display: flex;
-                    justify-content: space-between;
-                    flex-direction: column;
-
-                    &__title {
-                        width: auto;
-                        height: 40px;
-                        display: flex;
-                        justify-content: space-between;
-
-                        p {
-                            width: auto;
-                            height: auto;
-                            margin: auto 5px;
-                        }
-
-                        img {
-                            width: auto;
-                            height: auto;
-                            margin: auto 10px;
-                        }
-                    }
-
-                        &__modal {
-                            width: auto;
-                            height: 100%;
-                            display: none;
-                            justify-content: space-between;
-                            flex-direction: column;
-                            &.active {
-                                display: flex;
-                            }
-                        
-                            &__input {
-                                position: relative;
-                                width: auto;
-                                height: auto;
-                                display: flex;
-                                border: solid 3px rgb(179, 16, 16);
-
-                                span {
-                                    position: absolute;
-                                    right: 8px;
-                                    width: 10%;
-                                    height: 100%;
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                }
-                            }
-                            &__list {
-                                button {
-                                border: none;
-                                background-color: white;
-                                display: block;
-                                &.active {
-                                background-color: #FFD15B;     
-                                }
-                                }
-                            }
-                    }
-                }
-            }
-            &__columnTwo {
-                width: auto;
-                height: auto;
-                display: flex;
-                justify-content: center;
-                margin: 20px auto;
-                background-color: white;
-                align-items: flex-end;
-                border-radius: 8px 8px 8px 8px;
-                &__header {
-                    width: auto;
-                    height: auto;
-                    display: flex;
-                    justify-content: space-between;
-                    flex-direction: column;
-
-                    &__title {
-                        width: auto;
-                        height: 40px;
-                        display: flex;
-                        justify-content: space-between;
-                        margin: auto auto ;
-                        p {
-                            width: auto;
-                            height: auto;
-                            margin: auto 5px;
-                        }
-
-                        img {
-                            width: auto;
-                            height: auto;
-                            margin: auto 10px;
-                        }
-
-                    }
-
-                    &__modal {
-                        width: auto;
-                        height: 100%;
-                        display: none;
-                        justify-content: space-between;
-                        flex-direction: column;
-                        &.active {
-                            display: flex;
-                        }
-                        &__input {
-                            position: relative;
-                            width: auto;
-                            height: auto;
-                            display: flex;
-                            border: solid 3px rgb(179, 16, 16);
-
-                            span {
-                                position: absolute;
-                                right: 8px;
-                                width: 10%;
-                                height: 100%;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                            }
-                        }
-                        &__list {
-                            button {
-                            border: none;
-                            background-color: white;
-                            display: block;
-                            &.active {
-                               background-color: #FFD15B;   
-                            }
-                            }
-                        }
-                    }
-                }
-            }
-
+            size: 14px;
+            &__columnOne ,
+            &__columnTwo,
             &__columnThree {
                 width: auto;
                 height: auto;
@@ -185,19 +35,16 @@
                 justify-content: center;
                 margin: 20px auto;
                 background-color: white;
+                align-items: baseline;
                 border-radius: 8px 8px 8px 8px;
-                align-items: flex-end;
-
-
                 &__header {
                     width: auto;
                     height: auto;
                     display: flex;
                     justify-content: space-between;
                     flex-direction: column;
-
                     &__title {
-                        width: auto;
+                        width: 190px;
                         height: 40px;
                         display: flex;
                         justify-content: space-between;
@@ -205,17 +52,13 @@
                             width: auto;
                             height: auto;
                             margin: auto 5px;
-                            text-align:center;
                         }
-
                         img {
                             width: auto;
                             height: auto;
                             margin: auto 10px;
                         }
-
                     }
-
                     &__modal {
                         width: auto;
                         height: 100%;
@@ -230,25 +73,44 @@
                             width: auto;
                             height: auto;
                             display: flex;
-                            border: solid 3px rgb(179, 16, 16);
-
-                            span {
+                            justify-content: center;
+                            span.glyphicon-search{
                                 position: absolute;
-                                right: 8px;
+                                right: 15px;
                                 width: 10%;
                                 height: 100%;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
                             }
+                            span.glyphicon-remove{
+                                position: absolute;
+                                right: 40px;
+                                width: 10%;
+                                height: 100%;
+                                display: none;
+                                justify-content: center;
+                                align-items: center;
+                                font-size: 10px;
+                                &.active {
+                                    display: flex;                                
+                                 }
+                            }
                         }
                         &__list {
+                        
                             button {
+                            width: 190px;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
                             border: none;
                             background-color: white;
                             display: block;
+                            // font-size: 12px;
+                           
                             &.active {
-                               background-color: #FFD15B;    
+                               background-color: #FFD15B;     
                             }
                             }
                         }
@@ -274,7 +136,6 @@
             border: solid 2px rgb(115, 113, 113);
             border-radius: 10px;
             margin: 0px 0px 15px 0px;
-
             &__content {
                 position: relative;
                 width: auto;
@@ -284,15 +145,12 @@
                 border: 1px solid black;
                 border-radius: 8px 8px 8px 8px;
                 background-color: #FFD15B;   
-
-
                 &__list {
                     width: auto;
                     height: 80%;
                     display: flex;
                     margin: 0px 12px 0px 6px;
                     background-color: #FFD15B;
-                    
                 }  &__delete {
                     position: absolute;
                     width: 12px;
@@ -306,12 +164,10 @@
                     align-items: center;
                     top: 11px;
                     right: 0px;
-                    
                 }
             }
         }
     }
-
     &__all {
         width: 100%;
         height: auto;
@@ -321,9 +177,6 @@
         flex-wrap: wrap;
         justify-content: space-around;
         background-color: #D9D9D9;
-        ;
-
-
         &__recette {
             width: 35vh;
             height: auto;
@@ -332,7 +185,6 @@
             border-radius: 10px 10px 0px 0px;
             background-color: white;
             margin-bottom: 40px;
-
             &__img {
                 position: relative;
                 width: 35vh;
@@ -376,7 +228,7 @@
                 height: auto;
                 display: flex;
                 justify-content: center;
-
+                font-size: 18px;
                 &__content {
                     width: 90%;
                     height: auto;
@@ -384,7 +236,12 @@
                     flex-direction: column;
                     justify-content: center;
 
-                    // border: solid 3px rgb(0, 255, 38);
+                    &__texte  {
+                        &__p{
+                            font-size: 12px;
+                        }
+                    size: 14px;
+                    }
                     &__title {
                         width: auto;
                         height: auto;
@@ -393,12 +250,14 @@
                         font-size: 16px;
                         padding: 20px 0px;
                     }
+                 
 
                     &__recette {
                         width: auto;
                         height: auto;
                         display: flex;
                         font-size: 10px;
+                       
                     }
 
                     &__ingredients {

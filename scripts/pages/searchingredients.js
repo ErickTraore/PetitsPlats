@@ -85,15 +85,27 @@ export function reqInputIngredient (vCardData) {
     <div class='card__header__naving__columnOne__header__modal__input'>
       <input type='text' id='searchIngredients' class='card__header__naving__columnOne__header__modal__input__content'/>
       <span class='glyphicon glyphicon-search'></span>
-      </div>
-      <div class='card__header__naving__columnOne__header__modal__list'>
-      </div>`;
+      <span class='glyphicon glyphicon-remove'></span>
+    </div>
+    <div class='card__header__naving__columnOne__header__modal__list'>
+    </div>`;
     activeDisplay.innerHTML = valuehtml;
     listIngredients (vCardData);
     const inputIngredients = document.getElementById ('searchIngredients');
     inputIngredients.addEventListener ('input', event => {
       let dataInput = event.target.value.toLowerCase ();
       console.log (dataInput);
+      if(dataInput){
+      console.log ("insertion d'un élément dans la recherche(input) de l'ingredient");
+      const activeHtml = document.querySelector ('.glyphicon-remove');
+      activeHtml.classList.contains("active") ? activeHtml.classList.add("active")  : activeHtml.classList.add("active");
+      activeHtml.addEventListener('click', function() {
+      console.log ("clique sur remove");
+      document.getElementById('searchIngredients').value='';
+      activeHtml.classList.remove("active");
+      filterByIngredient(tableList);
+      })
+      } 
     });
     const buttons = document.querySelectorAll (
       '.card__header__naving__columnOne__header__modal__list__button'
@@ -118,12 +130,10 @@ export function reqInputIngredient (vCardData) {
     inputIngredients.addEventListener ('input', event => {
       let dataInput = event.target.value.toLowerCase ();
       console.log (dataInput);
-
       // "vCardIngredients " = liste de tous les ingredients qui matchent avec la selection de l'utilisateur.
       let vCardIngredients = [];
       // "myAllIngredients " = liste de tous les ingredients de toutes les recettes.
       let myAllIngredients = listIngredients (vCardData);
-
       let cardIngredients = document.querySelector (
         '.card__header__naving__columnOne__header__modal__list'
       );
@@ -144,6 +154,7 @@ export function reqInputIngredient (vCardData) {
       inputIngredients.addEventListener ('input', event => {
         let dataInput = event.target.value.toLowerCase ();
         console.log (dataInput);
+      
       });
       const buttons = document.querySelectorAll (
         '.card__header__naving__columnOne__header__modal__list__button'
