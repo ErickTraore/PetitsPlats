@@ -35,10 +35,10 @@ function executeClick (data) {
       })
       .join (' ');
 
-      displayUstensils(tableList, recipes);
-      let recipesWithUstensils = displayUstensils(tableList, recipes);
-      console.log(recipesWithUstensils);
-      let cardAppareils = document.querySelector('.card__header__naving__columnThree__header__modal__list')
+    //   displayUstensils(tableList, recipes);
+    //   let recipesWithUstensils = displayUstensils(tableList, recipes);
+    //   console.log(recipesWithUstensils);
+    //   let cardAppareils = document.querySelector('.card__header__naving__columnThree__header__modal__list')
     }
     const listContent = document.querySelectorAll (".card__header__todolist__content");
     const listContentArray = [...listContent];
@@ -63,42 +63,67 @@ function executeClick (data) {
             const buttons = document.querySelectorAll (  // on doit rechercher itemDelete dans la liste générale des ustensils.
                 '.card__header__naving__columnThree__header__modal__list__button'
                 );
-                const buttonsArray = [...buttons];  // Liste des ustensils proposés.
-                buttonsArray.forEach ((item) => {
-                   if(nameSelected == item.innerHTML){
-                    console.log("Bravo");
-                    item.classList.remove('active')
-                    if(tableList.length == 0){
-                        displayRecipes(recipes);
-                        reqInputIngredient(recipes);
-                        reqInputAppareil(recipes);
-                        reqInputUstensil(recipes);
-                      } else{
-                    reqInputIngredient(recipesWithUstensils);
-                    reqInputAppareil(recipesWithUstensils);
-                    }
-                   }
+            const buttonsArray = [...buttons];  // Liste des ustensils proposés.
+            buttonsArray.forEach ((item) => {
+                if(nameSelected == item.innerHTML){
+                console.log("Bravo");
+                item.classList.remove('active')
+                if(tableList.length == 0){
+                console.log(buttons);
+                    displayRecipes(recipes);
+                    reqInputIngredient(recipes);
+                    reqInputAppareil(recipes);
+                    // reqInputUstensil(recipes);
                    
-                })
-            }
+                  
+                    } else{
+                reqInputIngredient(recipesWithUstensils);
+                reqInputAppareil(recipesWithUstensils);
+                }
+                }
+                console.log(tableList);
+                
+            })
+            
+        }
           
         })
       });
     });
   }
+//   const todoListModal = document.querySelectorAll ('.card__header__naving__columnThree__header__modal__list__button');
+//   const todoListModalArray = [...todoListModal];
+//   console.log('tableList',tableList);
+//   console.log('todoListModalArray', todoListModalArray);
+//   todoListModalArray.forEach (itemElt => {
+//       tableList.forEach( itemTodolist => {
+//       if(itemElt.innerHTML == itemTodolist){
+//           itemElt.classList.add('active');
+//       }
+//       })
+//   })
+
+
+
+
+
+
+
   // data1  =  "tableList" = regroupe les ingredients sélectionné manuellement par l'utilisateur à partir de la liste générale des ingredients.
   // data2  =  c'est la liste de toutes les recettes du site
-  function displayUstensils(data1, data2){
-    let recipesWithUstensils = [];
-    data2.forEach(recipe => {
-        if (data1.every(element => recipe.ustensils.includes(element))) {
-           recipesWithUstensils.push(recipe);
-        }
-    })
-    document.querySelector ('.card__all').innerHTML = '';
-    displayRecipes(recipesWithUstensils);
-    return recipesWithUstensils;             
-    }
+//   function displayYellowColor(data1, data2){
+//     let recipesWithUstensils = [];
+//     data2.forEach(recipe => {
+//         if (data1.every(element => recipe.ustensils.includes(element))) {
+//            recipesWithUstensils.push(recipe);
+//         }
+//     })
+//     document.querySelector ('.card__all').innerHTML = '';
+//     displayRecipes(recipesWithUstensils);
+//     return recipesWithUstensils;             
+    // }
+
+
 const icon = document.querySelector ('.card__header__naving__columnThree__header__title');
 const activeDisplay = document.querySelector ('.card__header__naving__columnThree__header__modal');
 const iconup = document.querySelector ('.card__header__naving__columnThree__header__title__img');
@@ -139,65 +164,31 @@ export function reqInputUstensil(data) {
         executeClick (item);
         });
     });
-    
    
-    // if (tableList.length === 0) {
-    //     console.log("tableList est vide");
-    // } else{
-    //     console.log("tableList n'est pas vide");
-    // }
+   
+  document.getElementById("searchUstensils").onkeyup=function(){
+    if(event.keyCode == 8){
+        console.log("oui, c\'est le code 8");
+        const todoListModal = document.querySelectorAll ('.card__header__naving__columnThree__header__modal__list__button');
+        const todoListModalArray = [...todoListModal];
+        console.log('tableList',tableList);
+        console.log('todoListModalArray', todoListModalArray);
+        todoListModalArray.forEach (itemElt => {
+            tableList.forEach( itemTodolist => {
+            if(itemElt.innerHTML == itemTodolist){
+                itemElt.classList.add('active');
+            }
+            })
+        })
 
-
-
-
-    // console.log(todoListModalArray);
-    // console.log(tableList);
-    // console.log(todoListModal.innerHTML);
-
+    }
+    // console.log(event.target);
+  }
 
     if(inputUstensils){
         inputUstensils.addEventListener('input', (event) => {
         let dataInput = event.target.value.toLowerCase();
         console.log(dataInput);
-        if(dataInput){
-            console.log("dataInput existe",dataInput );
-        }else{
-            console.log("dataInput existe pas");
-            console.log(tableList);
-            if (tableList.length === 0) {
-                console.log("tableList est vide");
-                console.log(tableList);
-
-               let todoListModal = document.querySelectorAll ('.card__header__naving__columnThree__header__modal__list__button');
-               todoListModal.innerHTML = "";
-               let myAllUstensils = listUstensils(data);
-            } else {
-                console.log("tableList n'est pas vide");
-                console.log(tableList);
-                const todoListModal = document.querySelectorAll ('.card__header__naving__columnThree__header__modal__list__button');
-                const todoListModalArray = [...todoListModal];
-                if (todoListModalArray.length === 0) {
-                console.log("todoListModalArray est vide");
-                } else{
-                    console.log("todoListModalArray n'est pas vide, donc on peut colorer les ustensils sélectionnés en jaune");
-
-                    todoListModalArray.forEach (itemElt => {
-                        console.log(itemElt);
-                        console.log(itemElt.innerHTML);
-                        tableList.forEach( itemTodolist => {
-                        console.log(itemTodolist);
-
-                          if(itemElt.innerHTML == itemTodolist){
-                              itemElt.classList.add('active');
-                          }
-                          })
-                        })
-                        // tableList regroupe les ingredients sélectionné manuellement par l'utilisateur à partir de la liste générale des ingredients.
-                   
-                }
-
-            }
-        }
         let vCardUstensils = [];
         let myAllUstensils = listUstensils(data);
         console.log(myAllUstensils);
@@ -214,11 +205,7 @@ export function reqInputUstensil(data) {
                 vCardUstensils.push(dataUstensil); 
             }
             }));
-        let parent = document.querySelector(".card__header__naving__columnThree__header__modal__list");
-        console.log(parent); 
-        let myNodeList = parent.childNodes; 
-        let myNodeListArray = [...myNodeList];
-        console.log(myNodeListArray); 
+      
 
         goToTheDOM(vCardUstensils, dataElement, dataItem);
         // vCardIngredients = liste brute des ingrédients préselectionnés.

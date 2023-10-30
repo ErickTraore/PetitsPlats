@@ -4,7 +4,7 @@ import {goToTheDOM} from './DisplayNaving.js';
 import {filterByIngredient} from "./index.js"
 let dataElement = '.card__header__naving__columnOne__header__modal__list';
 let dataItem = 'card__header__naving__columnOne__header__modal__list__button';
-
+let dataInput = '';
 let tableList = [];
 let recipes = [];
 
@@ -93,7 +93,7 @@ export function reqInputIngredient (vCardData) {
     listIngredients (vCardData);
     const inputIngredients = document.getElementById ('searchIngredients');
     inputIngredients.addEventListener ('input', event => {
-      let dataInput = event.target.value.toLowerCase ();
+      dataInput = event.target.value.toLowerCase ();
       console.log (dataInput);
       if(dataInput){
       console.log ("insertion d'un élément dans la recherche(input) de l'ingredient");
@@ -106,6 +106,10 @@ export function reqInputIngredient (vCardData) {
       filterByIngredient(tableList);
       })
       } 
+      else{
+        const activeHtml = document.querySelector ('.glyphicon-remove');
+        activeHtml.classList.remove("active");
+      }
     });
     const buttons = document.querySelectorAll (
       '.card__header__naving__columnOne__header__modal__list__button'
@@ -116,6 +120,35 @@ export function reqInputIngredient (vCardData) {
         executeClick (item);
       });
     });
+  document.getElementById("searchIngredients").onkeyup=function(){
+    if(event.keyCode == 8) {
+      console.log("oui, c\'est le code 8");
+      const todoListModal = document.querySelectorAll ('.card__header__naving__columnOne__header__modal__list__button');
+      const todoListModalArray = [...todoListModal];
+      console.log('tableList',tableList);
+      console.log('todoListModalArray', todoListModalArray);
+      todoListModalArray.forEach (itemElt => {
+        if(tableList.length > 0){
+          tableList.forEach( itemTodolist => {
+          if(itemElt.innerHTML == itemTodolist){
+              itemElt.classList.add('active');
+          }
+          })
+        }else{
+          tableList.forEach( itemTodolist => {
+            if(itemElt.innerHTML == itemTodolist){
+                itemElt.classList.add('active');
+                // const activeHtml = document.querySelector ('.glyphicon-remove');
+                // activeHtml.classList.remove("active");
+
+            }
+            })
+          
+        }
+      })
+    }
+  }
+
     const todoListModal = document.querySelectorAll ('.card__header__naving__columnOne__header__modal__list__button');
     const todoListModalArray = [...todoListModal];
     console.log(tableList);
@@ -126,6 +159,10 @@ export function reqInputIngredient (vCardData) {
         }
       })
     })
+    if(!dataInput){
+      // const activeHtml = document.querySelector ('.glyphicon-remove');
+      // activeHtml.classList.remove("active");
+    }
   if (inputIngredients) {
     inputIngredients.addEventListener ('input', event => {
       let dataInput = event.target.value.toLowerCase ();
