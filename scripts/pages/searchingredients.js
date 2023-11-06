@@ -4,23 +4,19 @@ import {goToTheDOM} from './DisplayNaving.js';
 import {filterByIngredient} from "./index.js"
 let dataElement = '.card__header__naving__columnOne__header__modal__list';
 let dataItem = 'card__header__naving__columnOne__header__modal__list__button';
-let dataInput = '';
-let tableList = [];
-let recipes = [];
-
-// récupération des données(toutes les recttes) pour le traitement de la page.
-// tableList = tableList.filter(list => list !== nameSelected)
-
+let dataInput = '';       // les lettres récupérés par le clavier.
+let tableList = [];       // La liste des mots choisie par le client.
+let recipes = [];         // L'extraction de toutes les recettes dans la base de donnée.
+let todoListHTML = ''   // Mappage de la tableList pour construire les fonctionnalités de suppressions aux clients.
+// récupération des données(toutes les recettes) pour le traitement de la page.
 const dataRecipes = await getItems ();
 recipes = dataRecipes.items.recipes;
 
 function executeClick (data) { 
   if (tableList.includes (data.innerHTML) === false) {
     tableList.push (data.innerHTML);
-   
     // affichage de la tableList.
-    const todoListHTML = document.querySelector ('.card__header__todolist');
-    console.log (todoListHTML);
+    todoListHTML = document.querySelector ('.card__header__todolist');
     todoListHTML.innerHTML = tableList
       .map (element => {
         return `<div class="card__header__todolist__content"> 
@@ -33,38 +29,36 @@ function executeClick (data) {
       filterByIngredient(tableList);
     }
 
-    const listContent = document.querySelectorAll (".card__header__todolist__content");
-    const listContentArray = [...listContent];
-    // 01 => btns = élement sélectionné par l'utilisateur
-    const btns = document.querySelectorAll (".card__header__todolist__content__delete");
-    const btnsArray = [...btns];
-    btnsArray.forEach ((item, index) => {    //1ére boucle pour énumérer les élements choisis afin de repérer celui qui sera clicqué.
-      item.addEventListener ('click', function (event) {
-        let dataDelete = `${index}`;
-        console.log(item);
-        let nameSelected = item.dataset.name
-        listContentArray.forEach((list,  index) => { //Boucle pour trouver l'élement à effacer.
-            list.setAttribute('id', `${index}` )
-            if(`${index}` === dataDelete ){
-            const element = document.getElementById(`${index}`); // Il s'agit de l'id des élements sélectionnés par l'utilisateur.
-            element.remove(); // supprime le div avec l'identifiant 'id'
-            console.log(tableList);
-        tableList = tableList.filter(list => list !== nameSelected)
-            const buttons = document.querySelectorAll (  // on doit rechercher itemDelete dans la liste générale des ingredients.
-                '.card__header__naving__columnOne__header__modal__list__button'
-                );
-                const buttonsArray = [...buttons];  // Liste des ingredients proposés.
-                buttonsArray.forEach ((item) => {
-                   if(nameSelected == item.innerHTML){
-                    console.log("Bravo");
-                    item.classList.remove('active')
-                   }
-                })
-            }
-        
-  filterByIngredient(tableList);
-
-        })
+  const listContent = document.querySelectorAll (".card__header__todolist__content");
+  const listContentArray = [...listContent];
+  // 01 => btns = élement sélectionné par l'utilisateur
+  const btns = document.querySelectorAll (".card__header__todolist__content__delete");
+  const btnsArray = [...btns];
+  btnsArray.forEach ((item, index) => {    //1ére boucle pour énumérer les élements choisis afin de repérer celui qui sera clicqué.
+    item.addEventListener ('click', function (event) {
+      let dataDelete = `${index}`;
+      console.log(item);
+      let nameSelected = item.dataset.name
+      listContentArray.forEach((list,  index) => { //Boucle pour trouver l'élement à effacer.
+          list.setAttribute('id', `${index}` )
+          if(`${index}` === dataDelete ){
+          const element = document.getElementById(`${index}`); // Il s'agit de l'id des élements sélectionnés par l'utilisateur.
+          element.remove(); // supprime le div avec l'identifiant 'id'
+          console.log(tableList);
+          tableList = tableList.filter(list => list !== nameSelected)
+          const buttons = document.querySelectorAll (  // on doit rechercher itemDelete dans la liste générale des ingredients.
+          '.card__header__naving__columnOne__header__modal__list__button'
+          );
+          const buttonsArray = [...buttons];  // Liste des ingredients proposés.
+          buttonsArray.forEach ((item) => {
+              if(nameSelected == item.innerHTML){
+              console.log("Bravo");
+              item.classList.remove('active')
+              }
+          })
+          }
+          filterByIngredient(tableList);
+      })
       });
     });
 }
@@ -94,7 +88,7 @@ export function reqInputIngredient (vCardData) {
     const inputIngredients = document.getElementById ('searchIngredients');
     inputIngredients.addEventListener ('input', event => {
       dataInput = event.target.value.toLowerCase ();
-      console.log (dataInput);
+      console.log ('dataInput', dataInput);
       if(dataInput){
       console.log ("insertion d'un élément dans la recherche(input) de l'ingredient");
       const activeHtml = document.querySelector ('.glyphicon-remove');
@@ -102,7 +96,7 @@ export function reqInputIngredient (vCardData) {
       activeHtml.addEventListener('click', function() {
       console.log ("clique sur remove");
       document.getElementById('searchIngredients').value='';
-      activeHtml.classList.remove("active");
+      // activeHtml.classList.remove("active");
       filterByIngredient(tableList);
       })
       } 
@@ -138,8 +132,6 @@ export function reqInputIngredient (vCardData) {
           tableList.forEach( itemTodolist => {
             if(itemElt.innerHTML == itemTodolist){
                 itemElt.classList.add('active');
-                // const activeHtml = document.querySelector ('.glyphicon-remove');
-                // activeHtml.classList.remove("active");
 
             }
             })
@@ -159,10 +151,7 @@ export function reqInputIngredient (vCardData) {
         }
       })
     })
-    if(!dataInput){
-      // const activeHtml = document.querySelector ('.glyphicon-remove');
-      // activeHtml.classList.remove("active");
-    }
+    
   if (inputIngredients) {
     inputIngredients.addEventListener ('input', event => {
       let dataInput = event.target.value.toLowerCase ();
@@ -184,15 +173,7 @@ export function reqInputIngredient (vCardData) {
         }
       });
       console.log (vCardIngredients);
-      // reqInputIngredient (vCardIngredients)
-
       goToTheDOM (vCardIngredients, dataElement, dataItem);
-      const inputIngredients = document.getElementById ('searchIngredients');
-      inputIngredients.addEventListener ('input', event => {
-        let dataInput = event.target.value.toLowerCase ();
-        console.log (dataInput);
-      
-      });
       const buttons = document.querySelectorAll (
         '.card__header__naving__columnOne__header__modal__list__button'
       );
@@ -223,8 +204,6 @@ export function listIngredients (data) {
       }
     });
   });
-  // tableList = allIngredients;
-console.log(allIngredients);
   goToTheDOM (allIngredients, dataElement, dataItem);
   return allIngredients;
 }

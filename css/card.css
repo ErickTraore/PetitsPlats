@@ -83,7 +83,12 @@
                 font-size: 10px; }
                 .card__header__naving__columnOne__header__modal__input span.glyphicon-remove.active, .card__header__naving__columnTwo__header__modal__input span.glyphicon-remove.active, .card__header__naving__columnThree__header__modal__input span.glyphicon-remove.active {
                   display: flex; }
-            .card__header__naving__columnOne__header__modal__list button, .card__header__naving__columnTwo__header__modal__list button, .card__header__naving__columnThree__header__modal__list button {
+              .card__header__naving__columnOne__header__modal__input__content, .card__header__naving__columnTwo__header__modal__input__content, .card__header__naving__columnThree__header__modal__input__content {
+                width: auto;
+                height: auto; }
+                .card__header__naving__columnOne__header__modal__input__content.active, .card__header__naving__columnTwo__header__modal__input__content.active, .card__header__naving__columnThree__header__modal__input__content.active {
+                  display: flex; }
+            .card__header__naving__columnOne__header__modal__list__button, .card__header__naving__columnTwo__header__modal__list__button, .card__header__naving__columnThree__header__modal__list__button {
               width: 190px;
               overflow: hidden;
               white-space: nowrap;
@@ -91,7 +96,7 @@
               border: none;
               background-color: white;
               display: block; }
-              .card__header__naving__columnOne__header__modal__list button.active, .card__header__naving__columnTwo__header__modal__list button.active, .card__header__naving__columnThree__header__modal__list button.active {
+              .card__header__naving__columnOne__header__modal__list__button.active, .card__header__naving__columnTwo__header__modal__list__button.active, .card__header__naving__columnThree__header__modal__list__button.active {
                 background-color: #FFD15B; }
     .card__header__total {
       width: 20%;

@@ -1,7 +1,6 @@
 import { displayRecipes } from "./DisplayRecipes.js"
 import { getItems } from "./getData.js";
 import { goToTheDOM } from "./DisplayNaving.js";
-import {filterByAppareil} from "./index.js"
 import {listIngredients} from "./searchingredients.js";
 import {listUstensils} from "./searchustensils.js";
 import { reqInputIngredient } from "./searchingredients.js"
@@ -24,6 +23,7 @@ function executeClick (data) {
       const todoList = document.querySelector ('.card__header__todolist');
       console.log (todoList);
       todoList.innerHTML = tableList
+      
       .map (element => {
         return `<div class="card__header__todolist__content"> 
                      <div class="card__header__todolist__content__list"> ${element} </div>
@@ -31,6 +31,7 @@ function executeClick (data) {
                </div>`;
       })
       .join (' ');
+      console.log (tableList);
 
       let recipesWithAppareils = displayAppareils(tableList, recipes);
       console.log(recipesWithAppareils);
@@ -122,14 +123,13 @@ function displayAppareils(data1, data2) {     // recherche à partir de toutes l
         console.log ("recipe.appliance # data1");
       }
     })
-}
-else {
-  console.log ("data1.length > 1");
-  document.querySelector ('.card__all').innerHTML = '';
-  recipesWithAppareils = [];
-  data1 = [];
-
-}
+  }
+  else {
+    console.log ("data1.length > 1");
+    document.querySelector ('.card__all').innerHTML = '';
+    recipesWithAppareils = [];
+    data1 = [];
+  }
   document.querySelector ('.card__all').innerHTML = '';
   displayRecipes(recipesWithAppareils);  
   return recipesWithAppareils;             
@@ -156,14 +156,39 @@ export function reqInputAppareil(data) {
     <div class='card__header__naving__columnTwo__header__modal__list'>
     </div>`;
    
-        activeDisplay.innerHTML = valuehtml;
-        listAppareils(data); 
-         const inputAppareils = document.getElementById ('searchAppareils');
-         inputAppareils.addEventListener ('input', event => {
+  activeDisplay.innerHTML = valuehtml;
+  listAppareils(data); 
+    const inputAppareils = document.getElementById ('searchAppareils');
+    inputAppareils.addEventListener ('input', event => {
       let dataInput = event.target.value.toLowerCase ();
       console.log ('dataInput', dataInput);
+      if(dataInput){
+        console.log ("insertion d'un élément dans la recherche(input) des appareils");
+        const activeHtml = document.getElementById('appareilRemove');
+        activeHtml.classList.contains("active") ? activeHtml.classList.add("active")  : activeHtml.classList.add("active");
+        activeHtml.addEventListener('click', function() {
+        console.log ("clique sur remove");
+        document.getElementById('searchAppareils').value='';
+        // activeHtml.classList.remove("active");
+        // filterByUstensils(tableList);
+        })
+        } 
+        else{
+          // const activeHtml = document.getElementsByClassName('.glyphicon-remove');
+          const activeHtml = document.getElementById('appareilRemove');
+          console.log(activeHtml);
+          activeHtml.classList.remove("active");
+          console.log(activeHtml);
 
+        }
       });
+
+
+
+
+
+
+
 const buttons = document.querySelectorAll (
   '.card__header__naving__columnTwo__header__modal__list__button'
 );
@@ -172,9 +197,6 @@ buttonsArray.forEach ((item, index) => {
 console.log(item);
   item.addEventListener ('click', function () {
     executeClick (item);
-    // if(item.innerHTML)=
-  // item.classList.add('active');
-// });
 });
 
 })
@@ -189,57 +211,48 @@ todoListModalArray.forEach (itemElt => {
     }
     })
   })
-  // tableList regroupe les ingredients sélectionné manuellement par l'utilisateur à partir de la liste générale des ingredients.
-  
-       if(inputAppareils) {
-       inputAppareils.addEventListener('input', (event) => {
-        let dataInput = event.target.value.toLowerCase();
-        console.log(dataInput);
-        if(dataInput){
-          const activeHtml = document.getElementById("appareilRemove")
-          // activeHtml.style.display = "flex";
-          console.log ("insertion d'un élément dans la recherche(input) de l'appareil");
-          console.log(activeHtml);
-         
-          activeHtml.classList.contains("active") ? activeHtml.classList.add("active")  : activeHtml.classList.add("active");
-          activeHtml.addEventListener('click', function() {
-          console.log ("clique sur remove");
-          document.getElementById('searchAppareils').value='';
-          activeHtml.classList.remove("active");
-          reqInputAppareil(data)
-          }) 
-          } 
-        let vCardAppareils = [];
-        let myAllAppareils = listAppareils(data);
-        console.log(myAllAppareils);
-        let cardAppareils = document.querySelector('.card__header__naving__columnTwo__header__modal__list');
-        cardAppareils.innerHTML = "";
-        myAllAppareils.forEach((dataAppareil => { 
-            let tableAppareils = "";
-            tableAppareils = dataAppareil;
-            console.log(tableAppareils);
-     
-            if( tableAppareils.toLowerCase().includes(dataInput)) {
-              vCardAppareils.push(dataAppareil); 
-            console.log("item identique");
-              }
-          }));
-          console.log(vCardAppareils);
-          goToTheDOM(vCardAppareils,dataElement, dataItem)
-           // vCardIngredients = liste brute des ingrédients préselectionnés.
-      // buttons(table) = liste brute des ingrédients préselectionnés automatiquement, introduit dans le html.
-      // tableList = liste des ingrédients sélectionés manuellement par l'utilisateur.
-      const buttons = document.querySelectorAll (
-        '.card__header__naving__columnTwo__header__modal__list__button'
-      );
-      const buttonsArray = [...buttons];
-      buttonsArray.forEach (item => {
-        item.addEventListener ('click', function () {
-          executeClick (item);
-        });
-      });
+  // tableList ici regroupe l'appareil sélectionné manuellement par l'utilisateur à partir de la liste générale des appareilss.
+  if(inputAppareils) {
+  inputAppareils.addEventListener('input', (event) => {
+  let dataInput = event.target.value.toLowerCase();
+  console.log(dataInput);
+  if(dataInput){
+    const activeHtml = document.getElementById("appareilRemove")
+    // activeHtml.style.display = "flex";
+    console.log ("insertion d'un élément dans la recherche(input) de l'appareil");
+    console.log(activeHtml);
+    activeHtml.classList.contains("active") ? activeHtml.classList.add("active")  : activeHtml.classList.add("active");
+    activeHtml.addEventListener('click', function() {
+    console.log ("clique sur remove");
+    document.getElementById('searchAppareils').value='';
+    activeHtml.classList.remove("active");
+    reqInputAppareil(data)
+    }) 
+    } 
+  let vCardAppareils = [];
+  let myAllAppareils = listAppareils(data);
+  let cardAppareils = document.querySelector('.card__header__naving__columnTwo__header__modal__list');
+  cardAppareils.innerHTML = "";
+  myAllAppareils.forEach((dataAppareil => { 
+    let tableAppareils = "";
+    tableAppareils = dataAppareil;
+
+    if( tableAppareils.toLowerCase().includes(dataInput)) {
+      vCardAppareils.push(dataAppareil); 
+      }
+  }));
+  goToTheDOM(vCardAppareils,dataElement, dataItem)
+  const buttons = document.querySelectorAll (
+      '.card__header__naving__columnTwo__header__modal__list__button'
+    );
+  const buttonsArray = [...buttons];
+  buttonsArray.forEach (item => {
+    item.addEventListener ('click', function () {
+      executeClick (item);
     });
-}
+  });
+    });
+  }
 }
 // ExécUtion de la fonctionnalité APPAREILS pour la totalité des recettes.
 reqInputAppareil(recipes);
@@ -250,7 +263,6 @@ export function  listAppareils(data) {
     data.forEach((dataItem) => {
         let myAppliance = dataItem.appliance;
         let theAppliance = myAppliance.toLowerCase();
-        console.log(theAppliance);
         if(allAppareils.includes(theAppliance)==false){
             allAppareils.push(theAppliance);
         }

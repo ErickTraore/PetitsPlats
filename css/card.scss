@@ -93,9 +93,18 @@
                                 align-items: center;
                                 font-size: 10px;
                                 &.active {
+                                    display: flex;
+                                }
+                            }
+                            &__content {
+                                width: auto;
+                                height: auto;
+                                &.active {
                                     display: flex;                                
                                  }
+
                             }
+
                         }
                         &__list {
                             &__button {
@@ -107,7 +116,6 @@
                             background-color: white;
                             display: block;
                             // font-size: 12px;
-                           
                             &.active {
                                background-color: #FFD15B;     
                             }

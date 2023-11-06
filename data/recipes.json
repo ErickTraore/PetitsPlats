@@ -15,7 +15,6 @@
                 "ingredient" : "Jus de citron",
                 "quantity" : 2,
                 "unit" : ""
-
             },
             {
                 "ingredient" : "Crème de coco",
@@ -31,7 +30,6 @@
                 "ingredient": "Glaçons",
                 "quantity" : "",
                 "unit" : ""
-
             }
         ],
         "time": 10,
@@ -60,7 +58,6 @@
                 "ingredient" : "Tomate",
                 "quantity" : 2,
                 "unit" : ""
-
             },
             {
                 "ingredient" : "Carotte",

@@ -7,10 +7,10 @@ import { reqInputUstensil } from "./searchustensils.js"
   
 // Récupère les datas des recipes
 const { items } = await getItems();
-const dataCard = items.recipes; //Liste de toutes les recettes.
-     console.log(dataCard);
-// Affiche toutes les recettes:  "dataCard"
-  displayRecipes(dataCard)
+const dataCards = items.recipes; //Liste de toutes les recettes.
+ console.log(dataCards);
+// Affiche toutes les recettes:  "dataCards"
+displayRecipes(dataCards)
    
 // Affiche les recettes  triées avec l'input 1: vCard"
 // Cette phase ne gère pas les ingredients directement, mais les gère pour pouvoir obtenir uniquement les recettes liés à certains ingredients.
@@ -19,8 +19,10 @@ inputSearch.addEventListener('input', (event) => {
 let dataInput = event.target.value.toLowerCase();
 console.log(dataInput);
 let vCard = [];
-    
-dataCard.forEach((data => { 
+
+
+
+dataCards.forEach((data => { 
   let tableIngredients = "";
   tableIngredients = data.ingredients.map(ingredient => {
     return ingredient.ingredient
@@ -30,20 +32,30 @@ dataCard.forEach((data => {
     vCard.push(data); 
   }
 }
+
+
 ));
+console.log(dataCards.length);
+console.log(vCard.length);
+if(vCard.length > dataCards.length){
+  // displayPage(vCard)
+}
+function displayPage(data) {
+  displayRecipes(data);
+  reqInputIngredient(data);
+  reqInputAppareil(data);
+  reqInputUstensil(data);
+}
+
     document.querySelector ('.card__all').innerHTML = '';
-    displayRecipes(vCard);
-    reqInputIngredient(vCard);
-    reqInputAppareil(vCard);
-    reqInputUstensil(vCard);
+    displayPage(vCard)
 });
 
 export const filterByIngredient = (ingredients) => {    // ingredients correspond à la tableList
-  console.log(ingredients);
   let vCard = []
-  dataCard.forEach((data_ingredients) => { 
+  dataCards.forEach((dataCard) => { 
     let tableIngredients = "";
-    tableIngredients = data_ingredients.ingredients.map(ingredient => {
+    tableIngredients = dataCard.ingredients.map(ingredient => {
       return ingredient.ingredient
     }).join(' ')
     // compte le nombre d'ingredient trouvé dans la recette
@@ -55,25 +67,48 @@ export const filterByIngredient = (ingredients) => {    // ingredients correspon
     })
     // si le nombre d'ingredient trouvé est égale au nombre d'ingredient de la recette, alors on ajoute la recette dans le tableau vCard
     if(countIngredient === ingredients.length){
-      vCard.push(data_ingredients); // récupère toutes les recettes qui contiennes tous les ingredients choisi par l'utilisateur
+      vCard.push(dataCard); // récupère toutes les recettes qui contiennes tous les ingredients choisi par l'utilisateur
     }
   })
-  console.log(vCard);
-  console.log(ingredients);
   document.querySelector ('.card__all').innerHTML = '';
   displayRecipes(vCard);
   reqInputIngredient(vCard);
   reqInputAppareil(vCard);
   reqInputUstensil(vCard);
 }
-
-// ici, je dois filtrer les ingredients et les ustensils.
-export const filterByAppareil = (appareils) => {    // ingredients correspond à la tableList
-  console.log("ici, je dois filtrer les ingredients et les ustensils");
-  console.log(appareils);
-  console.log(dataCard);
+export const filterByUstensils = (ustensils) => {    // ingredients correspond à la tableList
+ console.log(ustensils);
+  let vCard = []
+  dataCards.forEach((dataCard) => { 
+    let tableUstensils = "";
+    tableUstensils = dataCard.ustensils.map(ustensil => {
+      return ustensil
+    }).join(' ')
+      console.log(tableUstensils);
+// içi on créé l'algorithme suivant: Si le nombre d'élément recherché est égal au nombre d'élément trouvé dans l"une des recettes, alors cette recette est validée.
+    // compte le nombre d'ingredient trouvé dans la recette
+    let countUstensil = 0;
+    ustensils.forEach((ustensil) => {
+      if(tableUstensils.toLowerCase().includes(ustensil) ){  // tableIngredients correspond aux ingredients de chaque recette.
+        countUstensil++;
+      }
+    })
+    // si le nombre d'ingredient trouvé est égale au nombre d'ingredient de la recette, alors on ajoute la recette dans le tableau vCard
+    if(countUstensil === ustensils.length){
+      vCard.push(dataCard); // récupère toutes les recettes qui contiennes tous les ingredients choisi par l'utilisateur
+    }
+  })
+  document.querySelector ('.card__all').innerHTML = '';
+  console.log(vCard);
+  // displayPage(vCard);
+  displayRecipes(vCard);
+  reqInputIngredient(vCard);
+  reqInputAppareil(vCard);
+  reqInputUstensil(vCard);
 
 }
+
+
 
 
 
