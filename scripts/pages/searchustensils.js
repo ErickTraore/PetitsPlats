@@ -1,10 +1,13 @@
 import { displayRecipes } from "./DisplayRecipes.js"
 import { getItems } from "./getData.js";
 import { goToTheDOM } from "./DisplayNaving.js";
-import {listIngredients} from "./searchingredients.js";
+// import {listIngredients} from "./searchingredients.js";
 import { reqInputIngredient } from "./searchingredients.js"
 import { reqInputAppareil } from "./searchappareils.js"
 import { filterByUstensils } from "./index.js";
+import { toggleIcon} from "./index.js";
+import {displayToDoList} from "./index.js";
+
 
 // Modification profonde.
 let dataElement = ".card__header__naving__columnThree__header__modal__list"
@@ -14,32 +17,15 @@ let tableList = [];
 let recipes = [];
 let recipesForUstensils = [];
 
+
 // récupération des données pour le traitement de la page.
 const dataRecipes = await getItems ();
 recipes = dataRecipes.items.recipes;
 
 function executeClick (data) {
-  data.classList.add('active')
-  console.log (data);
-;    if (tableList.includes (data.innerHTML) === false) {
-  console.log ('click', data.innerHTML);
-  tableList.push (data.innerHTML);
-  const todoList = document.querySelector ('.card__header__todolist');
-  todoList.innerHTML  = tableList
-  .map (element => {
-    return `<div class="card__header__todolist__content"> 
-                 <div class="card__header__todolist__content__list"> ${element} </div>
-                 <button class="card__header__todolist__content__delete" data-name="${element}"> x </button>
-           </div>`;
-  })
-  .join (' ');
+  displayToDoList(tableList, data)
   filterByUstensils(tableList);
 
-//   displayUstensils(tableList, recipes);
-//   let recipesWithUstensils = displayUstensils(tableList, recipes);
-//   console.log(recipesWithUstensils);
-//   let cardAppareils = document.querySelector('.card__header__naving__columnThree__header__modal__list')
-}
 const listContent = document.querySelectorAll (".card__header__todolist__content");
 const listContentArray = [...listContent];
 const btns = document.querySelectorAll (".card__header__todolist__content__delete");
@@ -96,15 +82,13 @@ btnsArray.forEach ((item, index) => {    //1ére boucle pour énumérer les éle
 const icon = document.querySelector ('.card__header__naving__columnThree__header__title');
 const activeDisplay = document.querySelector ('.card__header__naving__columnThree__header__modal');
 const iconup = document.querySelector ('.card__header__naving__columnThree__header__title__img');
+
 icon.addEventListener ('click', function () {
   activeDisplay.classList.contains("active") ? activeDisplay.classList.remove("active")  : activeDisplay.classList.add("active");
   iconup.classList.toggle ('myicon');
 })
 
-export function reqInputUstensil(data) {
-    console.log(data);
-    data == recipesForUstensils;
-    const buttons_ustensil = document.querySelectorAll(".card__header__naving__columnThree__header__modal__list__button");
+export function reqInputUstensil(vCardData) {
     const valuehtml =`
     <div class='card__header__naving__columnThree__header__modal__input'>
         <input type='text' id='searchUstensils' class='card__header__naving__columnThree__header__modal__input__content'/>
@@ -114,7 +98,7 @@ export function reqInputUstensil(data) {
     <div class='card__header__naving__columnThree__header__modal__list'>
     </div>`
         activeDisplay.innerHTML = valuehtml;
-        listUstensils(data); 
+        factoryInput(vCardData); 
 
         const inputUstensils = document.getElementById ('searchUstensils');
         inputUstensils.addEventListener ('input', event => {
@@ -174,6 +158,7 @@ export function reqInputUstensil(data) {
             })
           }
         }
+///////////////////////////////////////////////////////////////////
 
     // Mise en place de la coloration jaunevau click des éléments ustensils
     const todoListModal = document.querySelectorAll ('.card__header__naving__columnThree__header__modal__list__button');
@@ -193,12 +178,12 @@ export function reqInputUstensil(data) {
         // "vCardIngredients " = liste de tous les ingredients qui matchent avec la selection de l'utilisateur.
         let vCardUstensils = [];
         // "myAllIngredients " = liste de tous les ingredients de toutes les recettes.
-        let myAllUstensils = listUstensils (data);
+        let myallData = factoryInput (vCardData);
         let cardUstensils = document.querySelector (
           '.card__header__naving__columnThree__header__modal__list'
         );
         cardUstensils.innerHTML = '';
-        myAllUstensils.forEach (dataUstensil => {
+        myallData.forEach (dataUstensil => {
           let tableUstensils = '';
           tableUstensils = dataUstensil
   
@@ -224,18 +209,18 @@ export function reqInputUstensil(data) {
 reqInputUstensil(recipes);
 
 // Céation de la liste des ustensils pour la création de la fonctionnalité :RECHERCHE.
-export function  listUstensils(data) {
-    const AllUstensils = [];
-    data.forEach((dataItem) => {
+export function  factoryInput(dataUstensils) {
+    const allData = [];
+    dataUstensils.forEach((dataItem) => {
         dataItem.ustensils.forEach((dataUstensils) => {
-        let myUstensils = dataUstensils;
-        let theUstensils = myUstensils.toLowerCase();
-        if(AllUstensils.includes(theUstensils)==false){
-                AllUstensils.push(theUstensils);
+        let myData  = dataUstensils;
+        let theData = myData .toLowerCase();
+        if(allData.includes(theData)==false){
+                allData.push(theData);
             }
         })
     })
-    goToTheDOM(AllUstensils, dataElement, dataItem);
-    return  AllUstensils;
+    goToTheDOM(allData, dataElement, dataItem);
+    return  allData;
 }
 

@@ -1,10 +1,13 @@
 import { displayRecipes } from "./DisplayRecipes.js"
 import { getItems } from "./getData.js";
 import { goToTheDOM } from "./DisplayNaving.js";
-import {listIngredients} from "./searchingredients.js";
-import {listUstensils} from "./searchustensils.js";
+// import {listIngredients} from "./searchingredients.js";
+// import {listUstensils} from "./searchustensils.js";
 import { reqInputIngredient } from "./searchingredients.js"
 import { reqInputUstensil } from "./searchustensils.js"
+import { filterByAppareils } from "./index.js";
+import {displayToDoList} from "./index.js";
+
 // Modification profonde.
 let dataElement = ".card__header__naving__columnTwo__header__modal__list"
 let dataItem = "card__header__naving__columnTwo__header__modal__list__button"
@@ -16,44 +19,8 @@ const dataRecipes = await getItems ();
 recipes = dataRecipes.items.recipes;
 
 function executeClick (data) {
-  if (tableList.includes (data.innerHTML) === false) {
-      tableList.push (data.innerHTML);
-      data.classList.add ('active');
-      // affichage de la tableList.
-      const todoList = document.querySelector ('.card__header__todolist');
-      console.log (todoList);
-      todoList.innerHTML = tableList
-      
-      .map (element => {
-        return `<div class="card__header__todolist__content"> 
-                     <div class="card__header__todolist__content__list"> ${element} </div>
-                     <div class="card__header__todolist__content__delete" data-name="${element}"> x </div>
-               </div>`;
-      })
-      .join (' ');
-      console.log (tableList);
-
-      let recipesWithAppareils = displayAppareils(tableList, recipes);
-      console.log(recipesWithAppareils);
-      let cardIngredients = document.querySelector (
-        '.card__header__naving__columnOne__header__modal__list'
-      );
-      cardIngredients.innerHTML = '';
-      let cardUstensils = document.querySelector('.card__header__naving__columnThree__header__modal__list')
-      cardUstensils.innerHTML = "";
-      let cardAppareils = document.querySelector('.card__header__naving__columnTwo__header__modal__list');
-      console.log(cardAppareils);
-
-      cardAppareils.innerHTML = "";
-
-      if(recipesWithAppareils !== null ){
-        reqInputIngredient (recipesWithAppareils);
-        listUstensils (recipesWithAppareils);
-        reqInputAppareil (recipesWithAppareils);
-        // reqInputIngredient(recipesWithAppareils);
-
-      };
-    }
+      displayToDoList(tableList, data)
+      filterByAppareils(tableList);
 
     const listContent = document.querySelectorAll (".card__header__todolist__content");
     const listContentArray = [...listContent];
@@ -105,36 +72,6 @@ function executeClick (data) {
     });
   }
 
-  // data1  =  "tableList" = regroupe les ingredients sélectionné manuellement par l'utilisateur à partir de la liste générale des ingredients.
-  // data2  =  c'est la liste de toutes les recettes du site
-function displayAppareils(data1, data2) {     // recherche à partir de toutes les recettes, celles qui contiennent l(es)'appereil(s) choisis par l'utilisateur.
-  let recipesWithAppareils = [];
-  if(data1.length === 1){
-    console.log ("data1.length == 1 ");
-    data2.forEach(recipe => {
-    //   console.log (recipe.appliance.toLowerCase());
-    //   console.log (data1);
-
-      if(recipe.appliance.toLowerCase() == data1){
-        recipesWithAppareils.push(recipe);
-        console.log ("recipe.appliance == data1");
-      }
-      else {
-        console.log ("recipe.appliance # data1");
-      }
-    })
-  }
-  else {
-    console.log ("data1.length > 1");
-    document.querySelector ('.card__all').innerHTML = '';
-    recipesWithAppareils = [];
-    data1 = [];
-  }
-  document.querySelector ('.card__all').innerHTML = '';
-  displayRecipes(recipesWithAppareils);  
-  return recipesWithAppareils;             
-}
-
 // displayAppareils(recipes, tableList);
 // Mise en place de la fonctionnalité APPAREILS
 // Mise en place du click d'ouverture ou de fermeture de la modal "Ingredients", avec création de l'input et de ses enfants
@@ -146,7 +83,7 @@ icon.addEventListener ('click', function () {
   activeDisplay.classList.contains("active") ? activeDisplay.classList.remove("active")  : activeDisplay.classList.add("active");
   iconup.classList.toggle ('myicon');
 })
-export function reqInputAppareil(data) {
+export function reqInputAppareil(vCardData) {
     const valuehtml =`
     <div class='card__header__naving__columnTwo__header__modal__input'>
         <input type='text' id='searchAppareils' class='card__header__naving__columnTwo__header__modal__input__content'/>
@@ -157,7 +94,7 @@ export function reqInputAppareil(data) {
     </div>`;
    
   activeDisplay.innerHTML = valuehtml;
-  listAppareils(data); 
+  factoryInput(vCardData); 
     const inputAppareils = document.getElementById ('searchAppareils');
     inputAppareils.addEventListener ('input', event => {
       let dataInput = event.target.value.toLowerCase ();
@@ -170,23 +107,16 @@ export function reqInputAppareil(data) {
         console.log ("clique sur remove");
         document.getElementById('searchAppareils').value='';
         // activeHtml.classList.remove("active");
-        // filterByUstensils(tableList);
+        filterByAppareils(tableList);
         })
         } 
         else{
           // const activeHtml = document.getElementsByClassName('.glyphicon-remove');
           const activeHtml = document.getElementById('appareilRemove');
-          console.log(activeHtml);
           activeHtml.classList.remove("active");
-          console.log(activeHtml);
 
         }
       });
-
-
-
-
-
 
 
 const buttons = document.querySelectorAll (
@@ -230,7 +160,7 @@ todoListModalArray.forEach (itemElt => {
     }) 
     } 
   let vCardAppareils = [];
-  let myAllAppareils = listAppareils(data);
+  let myAllAppareils= factoryInput(vCardData);
   let cardAppareils = document.querySelector('.card__header__naving__columnTwo__header__modal__list');
   cardAppareils.innerHTML = "";
   myAllAppareils.forEach((dataAppareil => { 
@@ -258,19 +188,19 @@ todoListModalArray.forEach (itemElt => {
 reqInputAppareil(recipes);
 
 // Céation de la liste des appareils pour la création de la fonctionnalité :RECHERCHE.
-export function  listAppareils(data) {
-    const allAppareils = [];
-    data.forEach((dataItem) => {
-        let myAppliance = dataItem.appliance;
-        let theAppliance = myAppliance.toLowerCase();
-        if(allAppareils.includes(theAppliance)==false){
-            allAppareils.push(theAppliance);
+export function  factoryInput(dataAppareils) {
+    const allData= [];
+   
+    dataAppareils.forEach((dataItem) => {
+        let myData = dataItem.appliance;
+        let theData = myData.toLowerCase();
+
+        if(allData.includes(theData)==false){
+            allData.push(theData);
         }
     })
-    console.log('allAppareils', allAppareils);
-
-    goToTheDOM(allAppareils, dataElement, dataItem);
-    return  allAppareils;
+    goToTheDOM(allData, dataElement, dataItem);
+    return  allData;
 
 }
 
