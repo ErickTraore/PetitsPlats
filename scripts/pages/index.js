@@ -3,6 +3,8 @@ import { getItems } from "./getData.js"
 import { reqInputIngredient } from "./searchingredients.js"
 import { reqInputAppareil } from "./searchappareils.js"
 import { reqInputUstensil } from "./searchustensils.js"
+let isSupSearch = false;
+let vCardSearch = [];
 
 // Récupère les datas des recipes
 const { items } = await getItems();
@@ -30,66 +32,88 @@ export {displayPage};
 
 // Affiche toutes les recettes:  "dataCards"
 displayRecipes(dataCards)
-   
 // Affiche les recettes  triées avec l'input 1: vCard"
-// Cette phase ne gère pas les ingredients directement, mais les gère pour pouvoir obtenir uniquement les recettes liés à certains ingredients.
+// Cette phase permet d'obtenir les recettes liées aux caractères recherchées.
 const inputSearch = document.getElementById('search');
 inputSearch.addEventListener('input', (event) => {
 let dataInput = event.target.value.toLowerCase();
 console.log(dataInput);
-let vCard = [];
-
-dataCards.forEach((data => { 
-  let tableIngredients = "";
-  tableIngredients = data.ingredients.map(ingredient => {
-    return ingredient.ingredient
-  }).join(' ')
-  if( data.name.toLowerCase().includes(dataInput) || data.description.toLowerCase().includes(dataInput) || tableIngredients.toLowerCase().includes(dataInput) 
-  ){
-    vCard.push(data); 
+// Conditionne l'affichage si plus de 3 carractères tapés.
+  if(dataInput.length > 2){
+    isSupSearch = true
+  } else {
+    isSupSearch = false;
   }
-}
+  console.log(isSupSearch);
 
-
-));
-console.log(dataCards.length);
-console.log(vCard.length);
-if(vCard.length > dataCards.length){
-  // displayPage(vCard)
-}
-
-
-    document.querySelector ('.card__all').innerHTML = '';
-    displayPage(vCard)
-});
-
-export const filterByIngredient = (ingredients) => {    // ingredients correspond à la tableList
-  let vCard = []
-  dataCards.forEach((dataCard) => { 
+if(isSupSearch){
+  let vCard = [];
+  dataCards.forEach((data => { 
     let tableIngredients = "";
-    tableIngredients = dataCard.ingredients.map(ingredient => {
+    tableIngredients = data.ingredients.map(ingredient => {
       return ingredient.ingredient
     }).join(' ')
-    // compte le nombre d'ingredient trouvé dans la recette
-    let countIngredient = 0;
-    ingredients.forEach((ingredient) => {
-      if(tableIngredients.toLowerCase().includes(ingredient) ){  // tableIngredients correspond aux ingredients de chaque recette.
-        countIngredient++;
+    if( data.name.toLowerCase().includes(dataInput) || data.description.toLowerCase().includes(dataInput) || tableIngredients.toLowerCase().includes(dataInput) 
+    ){
+      vCard.push(data); 
+    }
+  }
+  ));
+      vCardSearch = vCard;
+      document.querySelector ('.card__all').innerHTML = '';
+      displayPage(vCard)
+}else{
+      document.querySelector ('.card__all').innerHTML = '';
+      displayPage(dataCards)
+      reqInputIngredient(dataCards);
+      reqInputAppareil(dataCards);
+      reqInputUstensil(dataCards);
+}
+});
+
+export const filterByIngredient = (ingredients) => { 
+
+  // ingredients correspond à la tableList
+  function executeSearch(data) { 
+    let vCard = []
+    data.forEach((dataCard) => { 
+      let tableIngredients = "";
+      tableIngredients = dataCard.ingredients.map(ingredient => {
+        return ingredient.ingredient
+      }).join(' ')
+      // compte le nombre d'ingredient trouvé dans la recette
+      let countIngredient = 0;
+      ingredients.forEach((ingredient) => {
+        if(tableIngredients.toLowerCase().includes(ingredient) ){  // tableIngredients correspond aux ingredients de chaque recette.
+          countIngredient++;
+        }
+      })
+      // si le nombre d'ingredient trouvé est égale au nombre d'ingredient de la recette, alors on ajoute la recette dans le tableau vCard
+      if(countIngredient === ingredients.length){
+        vCard.push(dataCard); // récupère toutes les recettes qui contiennes tous les ingredients choisi par l'utilisateur
       }
     })
-    // si le nombre d'ingredient trouvé est égale au nombre d'ingredient de la recette, alors on ajoute la recette dans le tableau vCard
-    if(countIngredient === ingredients.length){
-      vCard.push(dataCard); // récupère toutes les recettes qui contiennes tous les ingredients choisi par l'utilisateur
-    }
-  })
+
   document.querySelector ('.card__all').innerHTML = '';
   displayPage(vCard);
-  
+}
+console.log(vCardSearch);
+console.log(isSupSearch);
+if(isSupSearch){
+  executeSearch(vCardSearch);
+}else{
+  executeSearch(dataCards);
+  // displayPage(dataCard)
+
+}
+
 }
 export const filterByUstensils = (ustensils) => {    // ingredients correspond à la tableList
  console.log(ustensils);
+ function executeSearch(data) { 
+
   let vCard = []
-  dataCards.forEach((dataCard) => { 
+  data.forEach((dataCard) => { 
     let tableUstensils = "";
     tableUstensils = dataCard.ustensils.map(ustensil => {
       return ustensil
@@ -110,11 +134,22 @@ export const filterByUstensils = (ustensils) => {    // ingredients correspond �
   document.querySelector ('.card__all').innerHTML = '';
   console.log(vCard);
   displayPage(vCard);
+ }
+ console.log(vCardSearch);
+console.log(isSupSearch);
+if(isSupSearch){
+  executeSearch(vCardSearch);
+}else{
+  executeSearch(dataCards);
+  // displayPage(dataCard)
 
 }
+}
 export const filterByAppareils = (appareil) => {    // ingredients correspond à la tableList
-   let vCard = []
-   dataCards.forEach((dataCard) => { 
+  function executeSearch(data) { 
+  
+  let vCard = []
+   data.forEach((dataCard) => { 
      let tableAppareils = "";
      tableAppareils = dataCard.appliance
        console.log(tableAppareils);
@@ -124,9 +159,16 @@ export const filterByAppareils = (appareil) => {    // ingredients correspond à
      // si le nombre d'ingredient trouvé est égale au nombre d'ingredient de la recette, alors on ajoute la recette dans le tableau vCard
    })
    document.querySelector ('.card__all').innerHTML = '';
-   console.log(vCard);
    displayPage(vCard);
-  
+}
+console.log(vCardSearch);
+console.log(isSupSearch);
+document.querySelector ('.card__all').innerHTML = '';
+if(isSupSearch){
+  executeSearch(vCardSearch);
+}else{
+  executeSearch(dataCards);
+}
  
  }
 

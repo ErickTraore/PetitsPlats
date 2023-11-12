@@ -19,6 +19,7 @@ recipes = dataRecipes.items.recipes;
 
 toggleIcon();
 function executeClick (data) { 
+  console.log(data);
     displayToDoList(tableList, data)
     filterByIngredient(tableList);
 
@@ -49,6 +50,7 @@ function executeClick (data) {
               }
           })
           }
+          console.log(tableList);
           filterByIngredient(tableList);
       })
       });
