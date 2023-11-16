@@ -33,7 +33,7 @@
             }
         }
         &__search{
-            width: 70%;
+            width: 72%;
             height: auto;
             display: flex;
             justify-content: center;
@@ -43,8 +43,8 @@
             background-color: white; 
             padding: 10px 10px; 
             input{
-                min-width: 90%;
-                min-height: auto; 
+                width: 70%;
+                height: auto;
                 justify-content: center;
                 display: flex;
                 align-self: center;

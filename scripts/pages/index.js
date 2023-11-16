@@ -5,7 +5,16 @@ import { reqInputAppareil } from "./searchappareils.js"
 import { reqInputUstensil } from "./searchustensils.js"
 let isSupSearch = false;
 let vCardSearch = [];
-
+let cardTotal = 0;
+function calculateTotalCard() {
+const cardAll = document.querySelectorAll('.card__all__recette');
+const cardAllArray = [...cardAll];
+  console.log(cardAllArray.length);
+let cardTotal = document.querySelector('.card__header__total');
+  cardTotal.innerHTML = '';
+  return cardTotal.innerHTML = cardAllArray.length + ' '+ 'Recettes';
+  // return cardTotal.innerHTML = cardAllArray.length + ' ' + Recettes;
+}
 // Récupère les datas des recipes
 const { items } = await getItems();
 const dataCards = items.recipes; //Liste de toutes les recettes.
@@ -18,6 +27,8 @@ const iconup = document.querySelector ('.card__header__naving__columnOne__header
     activeDisplay.classList.contains("active") ? activeDisplay.classList.remove("active")  : activeDisplay.classList.add("active");
     iconup.classList.toggle ('myicon');
   })
+calculateTotalCard();
+
   }
 export {toggleIcon};
 
@@ -26,19 +37,52 @@ function displayPage(data) {
   reqInputIngredient(data);
   reqInputAppareil(data);
   reqInputUstensil(data);
+  calculateTotalCard();
 }
 export {displayPage};
+const inputSearch = document.getElementById('search');
+const activeSearch = document.querySelector ('.glyphicon-search');
+const activeRemove = document.querySelector ('.glyphicon-remove');
+activeRemove.addEventListener('click', () =>{
+  console.log('YANKEE');
+  inputSearch.value = "";
+  deleteRemove();
+  calculateTotalCard();
 
+})
+
+function appearenceRemove() { 
+    activeRemove.classList.add("active")    // activeRemove.classList.contains("active") ? activeRemove.classList.remove("active")  : activeRemove.classList.add("active");
+    }
+function deleteRemove() { 
+  activeRemove.classList.remove("active")    // activeRemove.classList.contains("active") ? activeRemove.classList.remove("active")  : activeRemove.classList.add("active");
+  document.querySelector ('.card__all').innerHTML = '';
+  displayRecipes(dataCards)
+  calculateTotalCard();
+
+}
 
 // Affiche toutes les recettes:  "dataCards"
 displayRecipes(dataCards)
+calculateTotalCard();
+
 // Affiche les recettes  triées avec l'input 1: vCard"
 // Cette phase permet d'obtenir les recettes liées aux caractères recherchées.
-const inputSearch = document.getElementById('search');
 inputSearch.addEventListener('input', (event) => {
 let dataInput = event.target.value.toLowerCase();
 console.log(dataInput);
 // Conditionne l'affichage si plus de 3 carractères tapés.
+if(dataInput){
+  appearenceRemove()
+}else{
+  deleteRemove()
+  calculateTotalCard();
+
+}
+
+
+activeSearch.addEventListener('click', () =>{
+ 
   if(dataInput.length > 2){
     isSupSearch = true
   } else {
@@ -62,13 +106,19 @@ if(isSupSearch){
       vCardSearch = vCard;
       document.querySelector ('.card__all').innerHTML = '';
       displayPage(vCard)
+      calculateTotalCard();
+
 }else{
       document.querySelector ('.card__all').innerHTML = '';
       displayPage(dataCards)
       reqInputIngredient(dataCards);
       reqInputAppareil(dataCards);
       reqInputUstensil(dataCards);
+      calculateTotalCard();
+      
 }
+})
+
 });
 
 export const filterByIngredient = (ingredients) => { 
@@ -106,6 +156,7 @@ if(isSupSearch){
   // displayPage(dataCard)
 
 }
+calculateTotalCard();
 
 }
 export const filterByUstensils = (ustensils) => {    // ingredients correspond à la tableList
@@ -144,6 +195,8 @@ if(isSupSearch){
   // displayPage(dataCard)
 
 }
+calculateTotalCard();
+
 }
 export const filterByAppareils = (appareil) => {    // ingredients correspond à la tableList
   function executeSearch(data) { 
@@ -169,6 +222,7 @@ if(isSupSearch){
 }else{
   executeSearch(dataCards);
 }
+calculateTotalCard();
  
  }
 
@@ -190,7 +244,8 @@ function displayToDoList(tableList, data) {
     }
 }
 export { displayToDoList };
-
+export { calculateTotalCard }
+calculateTotalCard();
 
 
 

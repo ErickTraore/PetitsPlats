@@ -101,12 +101,13 @@ export function reqInputUstensil(vCardData) {
         factoryInput(vCardData); 
 
         const inputUstensils = document.getElementById ('searchUstensils');
+        const activeHtml = document.getElementById('ustensilRemove');
+
         inputUstensils.addEventListener ('input', event => {
           dataInput = event.target.value.toLowerCase ();
           console.log ('dataInput', dataInput);
           if(dataInput){
           console.log ("insertion d'un élément dans la recherche(input) des ustensils");
-          const activeHtml = document.getElementById('ustensilRemove');
           activeHtml.classList.contains("active") ? activeHtml.classList.add("active")  : activeHtml.classList.add("active");
           activeHtml.addEventListener('click', function() {
           console.log ("clique sur remove");
@@ -116,7 +117,6 @@ export function reqInputUstensil(vCardData) {
           })
           } 
           else{
-            const activeHtml = document.getElementById('ustensilRemove').value='';
             activeHtml.classList.remove("active");
           }
         });

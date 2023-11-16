@@ -67,7 +67,7 @@ const activeDisplay = document.querySelector ('.card__header__naving__columnOne_
     <div class='card__header__naving__columnOne__header__modal__input'>
       <input type='text' id='searchIngredients' class='card__header__naving__columnOne__header__modal__input__content'/>
       <span class='glyphicon glyphicon-search'></span>
-      <span class='glyphicon glyphicon-remove'></span>
+      <span id='ingredientRemove' class='glyphicon glyphicon-remove'></span>
     </div>
     <div class='card__header__naving__columnOne__header__modal__list'>
     </div>`;
@@ -76,12 +76,13 @@ const activeDisplay = document.querySelector ('.card__header__naving__columnOne_
 
 
     const inputIngredients = document.getElementById ('searchIngredients');
+    const activeHtml = document.getElementById('ingredientRemove');
+
     inputIngredients.addEventListener ('input', event => {
       dataInput = event.target.value.toLowerCase ();
       console.log ('dataInput', dataInput);
       if(dataInput){
       console.log ("insertion d'un élément dans la recherche(input) de l'ingredient");
-      const activeHtml = document.querySelector ('.glyphicon-remove');
       activeHtml.classList.contains("active") ? activeHtml.classList.add("active")  : activeHtml.classList.add("active");
       activeHtml.addEventListener('click', function() {
       console.log ("clique sur remove");
@@ -91,10 +92,12 @@ const activeDisplay = document.querySelector ('.card__header__naving__columnOne_
       })
       } 
       else{
-        const activeHtml = document.querySelector ('.glyphicon-remove');
-        activeHtml.classList.remove("active");
+      console.log (activeHtml);
+      activeHtml.classList.remove("active");
       }
     });
+
+    
     const buttons = document.querySelectorAll (
       '.card__header__naving__columnOne__header__modal__list__button'
     );
