@@ -38,7 +38,8 @@
             display: flex;
             justify-content: center;
             align-self: center;
-            border-radius: 10px;  
+            border-radius: 10px; 
+            align-items: baseline;
             margin: 10px 10px 100px 10px;
             background-color: white; 
             padding: 10px 10px; 
@@ -50,7 +51,7 @@
                 align-self: center;
                 border: none;
             }
-            span{
+            span:nth-child(3) {
                 min-width: 6vh;
                 height: 7vh;
                 justify-content: center;
@@ -62,6 +63,17 @@
                 border-radius: 7px;  
 
             }
+            span:nth-child(2) {
+                width: 7%;
+                height: 50%;
+                background: red;
+                align-items: center;
+                display: none;
+                &.active {
+                    display: flex;
+                }
+
+              }  
         }
         &__image{
             position: absolute;

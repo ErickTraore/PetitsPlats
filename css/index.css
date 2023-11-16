@@ -28,23 +28,24 @@
         min-width: 100%;
         min-height: 100%; }
     .header__div__search {
-      width: 70%;
+      width: 72%;
       height: auto;
       display: flex;
       justify-content: center;
       align-self: center;
       border-radius: 10px;
+      align-items: baseline;
       margin: 10px 10px 100px 10px;
       background-color: white;
       padding: 10px 10px; }
       .header__div__search input {
-        min-width: 90%;
-        min-height: auto;
+        width: 70%;
+        height: auto;
         justify-content: center;
         display: flex;
         align-self: center;
         border: none; }
-      .header__div__search span {
+      .header__div__search span:nth-child(3) {
         min-width: 6vh;
         height: 7vh;
         justify-content: center;
@@ -54,6 +55,14 @@
         background-color: black;
         font-weight: 700;
         border-radius: 7px; }
+      .header__div__search span:nth-child(2) {
+        width: 7%;
+        height: 50%;
+        background: red;
+        align-items: center;
+        display: none; }
+        .header__div__search span:nth-child(2).active {
+          display: flex; }
     .header__div__image {
       position: absolute;
       width: 100%;
