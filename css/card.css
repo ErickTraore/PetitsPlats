@@ -100,7 +100,7 @@
               .card__header__naving__columnOne__header__modal__list__button.active, .card__header__naving__columnTwo__header__modal__list__button.active, .card__header__naving__columnThree__header__modal__list__button.active {
                 background-color: #FFD15B; }
     .card__header__total {
-      width: 34.5%;
+      width: 30%;
       height: 80px;
       display: flex;
       font-size: 16px;
