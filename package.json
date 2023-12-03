@@ -4,7 +4,7 @@
   "description": "site javacsript",
   "main": "index.js",
   "scripts": {
-    "test": "no"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ErickTraore/PetitsPlats/issues"
   },
-  "homepage": "https://github.com/ErickTraore/PetitsPlats#readme"
+  "homepage": "https://github.com/ErickTraore/PetitsPlats#readme",
+  "devDependencies": {
+    "eslint": "^8.55.0"
+  }
 }
