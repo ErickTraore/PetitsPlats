@@ -1,13 +1,9 @@
 import { displayRecipes } from "./DisplayRecipes.js"
-import { getItems } from "./getData.js";
-import { goToTheDOM } from "./DisplayNaving.js";
-// import {listIngredients} from "./searchingredients.js";
+import { getItems } from "./getData.js"
+import { goToTheDOM } from "./DisplayNaving.js"
 import { reqInputIngredient } from "./searchingredients.js"
 import { reqInputAppareil } from "./searchappareils.js"
-import { filterByUstensils } from "./index.js";
-import { toggleIcon} from "./index.js";
-import {displayToDoList} from "./index.js";
-
+import { filterByUstensils, displayToDoList } from "./index.js"
 
 // Modification profonde.
 let dataElement = ".card__header__naving__columnThree__header__modal__list"
@@ -15,7 +11,6 @@ let dataItem = "card__header__naving__columnThree__header__modal__list__button"
 let dataInput = '';       // les lettres récupérés par le clavier.
 let tableList = [];
 let recipes = [];
-let recipesForUstensils = [];
 
 
 // récupération des données pour le traitement de la page.
@@ -133,8 +128,7 @@ export function reqInputUstensil(vCardData) {
         });
         });
         document.getElementById("searchUstensils").onkeyup=function(){
-          if(event.keyCode == 8) {
-            console.log("oui, c\'est le code 8");
+          if(KeyboardEvent == 8) {
             const todoListModal = document.querySelectorAll ('.card__header__naving__columnThree__header__modal__list__button');
             const todoListModalArray = [...todoListModal];
             console.log('tableList',tableList);
@@ -205,7 +199,7 @@ export function reqInputUstensil(vCardData) {
       });
     }
 
-};
+}
 reqInputUstensil(recipes);
 
 // Céation de la liste des ustensils pour la création de la fonctionnalité :RECHERCHE.

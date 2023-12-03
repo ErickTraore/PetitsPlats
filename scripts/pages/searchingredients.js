@@ -1,4 +1,3 @@
-import {displayRecipes} from './DisplayRecipes.js';
 import {getItems} from './getData.js';
 import {goToTheDOM} from './DisplayNaving.js';
 import {filterByIngredient} from "./index.js";
@@ -28,7 +27,7 @@ function executeClick (data) {
   const btns = document.querySelectorAll (".card__header__todolist__content__delete");
   const btnsArray = [...btns];
   btnsArray.forEach ((item, index) => {    //1ére boucle pour énumérer les élements choisis afin de repérer celui qui sera clicqué.
-    item.addEventListener ('click', function (event) {
+    item.addEventListener ('click', function () {
       let dataDelete = `${index}`;
       console.log(item);
       let nameSelected = item.dataset.name
@@ -109,7 +108,6 @@ const activeDisplay = document.querySelector ('.card__header__naving__columnOne_
     });
   document.getElementById("searchIngredients").onkeyup=function(){
     if(event.keyCode == 8) {
-      console.log("oui, c\'est le code 8");
       const todoListModal = document.querySelectorAll ('.card__header__naving__columnOne__header__modal__list__button');
       const todoListModalArray = [...todoListModal];
       console.log('tableList',tableList);
