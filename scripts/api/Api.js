@@ -14,17 +14,3 @@ export default class Api {
             .catch(err => console.error('an error occurs', err))
     }
 }
-
-class itemsApi extends Api {
-    /**
-     * 
-     * @param {string} url 
-     */
-    constructor(url) {
-        super(url)
-    }
-
-    async getìtems() {
-        return await this.get()
-    }
-}

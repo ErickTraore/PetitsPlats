@@ -5,7 +5,6 @@ import { reqInputAppareil } from "./searchappareils.js"
 import { reqInputUstensil } from "./searchustensils.js"
 let isSupSearch = false;
 let vCardSearch = [];
-let cardTotal = 0;
 function calculateTotalCard() {
 const cardAll = document.querySelectorAll('.card__all__recette');
 const cardAllArray = [...cardAll];

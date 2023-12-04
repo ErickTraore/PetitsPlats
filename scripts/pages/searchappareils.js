@@ -28,7 +28,7 @@ function executeClick (data) {
     const btns = document.querySelectorAll (".card__header__todolist__content__delete");
     const btnsArray = [...btns];
     btnsArray.forEach ((item, index) => {    //1ére boucle pour énumérer les élements choisis afin de repérer celui qui sera clicqué.
-      item.addEventListener ('click', function (event) {
+      item.addEventListener ('click', function () {
         let dataDelete = `${index}`;
         console.log(item);
         let nameSelected = item.dataset.name
@@ -54,12 +54,12 @@ function executeClick (data) {
                       reqInputUstensil(recipes);
                     } else {
                     
-                     let recipesWithAppareils = displayAppareils(tableList, recipes);
-                    console.log(recipesWithAppareils);
-                     displayRecipes(recipesWithAppareils);
-                      reqInputIngredient(recipesWithAppareils);
-                      // reqInputAppareil(recipes);
-                      reqInputUstensil(recipesWithAppareils);
+                    //  let recipesWithAppareils = displayAppareils(tableList, recipes);
+                    // console.log(recipesWithAppareils);
+                    //  displayRecipes(recipesWithAppareils);
+                    //   reqInputIngredient(recipesWithAppareils);
+                    //   // reqInputAppareil(recipes);
+                    //   reqInputUstensil(recipesWithAppareils);
 
                     }
                    }
@@ -123,7 +123,7 @@ const buttons = document.querySelectorAll (
   '.card__header__naving__columnTwo__header__modal__list__button'
 );
 const buttonsArray = [...buttons];
-buttonsArray.forEach ((item, index) => {
+buttonsArray.forEach ((item) => {
 console.log(item);
   item.addEventListener ('click', function () {
     executeClick (item);
@@ -156,7 +156,7 @@ todoListModalArray.forEach (itemElt => {
     console.log ("clique sur remove");
     document.getElementById('searchAppareils').value='';
     activeHtml.classList.remove("active");
-    reqInputAppareil(data)
+    // reqInputAppareil(data)
     }) 
     } 
   let vCardAppareils = [];
