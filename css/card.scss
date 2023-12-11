@@ -55,7 +55,7 @@
                             margin: auto 5px;
                         }
                         img {
-                            width: auto;
+                            width: 100%;
                             height: auto;
                             margin: auto 10px;
                         }
@@ -203,8 +203,8 @@
                 border-radius: 10px 10px 0px 0px;
 
                 img {
-                    width: 70.3vh;
-                    height: 23vh;
+                    width: 100%;
+                    height: auto;
                     display: flex;
                     object-fit: cover;
                     border-radius: 10px 10px 0px 0px;
