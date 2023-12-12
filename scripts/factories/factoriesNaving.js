@@ -1,9 +1,9 @@
-export function navingFactory(data, dataItem ) {
+export function navingFactory (data, dataItem) {
   console.log (data);
-    const itemlist = document.createElement ('button');
-    itemlist.setAttribute("class", dataItem);
+  const itemlist = document.createElement ('button');
+  itemlist.setAttribute ('class', dataItem);
 
-    function makeNavingDOM () {
+  function makeNavingDOM () {
     itemlist.innerHTML = data;
     return itemlist;
   }

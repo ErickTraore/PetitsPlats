@@ -22,4 +22,3 @@
 - tests de performance pour les 2 versions
 - recommandation de l'algorithme à conserver
 
-## Compétences développées

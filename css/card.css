@@ -48,7 +48,7 @@
               height: auto;
               margin: auto 5px; }
             .card__header__naving__columnOne__header__title img, .card__header__naving__columnTwo__header__title img, .card__header__naving__columnThree__header__title img {
-              width: auto;
+              width: 9%;
               height: auto;
               margin: auto 10px; }
           .card__header__naving__columnOne__header__modal, .card__header__naving__columnTwo__header__modal, .card__header__naving__columnThree__header__modal {
@@ -165,13 +165,13 @@
       .card__all__recette__img {
         position: relative;
         width: 35vh;
-        height: auto;
+        height: 35vh;
         display: flex;
         flex-direction: row;
         border-radius: 10px 10px 0px 0px; }
         .card__all__recette__img img {
-          width: 70.3vh;
-          height: 23vh;
+          width: 100%;
+          height: auto;
           display: flex;
           object-fit: cover;
           border-radius: 10px 10px 0px 0px; }
@@ -206,7 +206,8 @@
           .card__all__recette__body__content__texte {
             size: 14px; }
             .card__all__recette__body__content__texte__p {
-              font-size: 12px; }
+              font-size: 12px;
+              font-family: 'Anto', sans-serif; }
           .card__all__recette__body__content__title {
             width: auto;
             height: auto;
@@ -214,6 +215,8 @@
             font-weight: 700;
             font-size: 16px;
             padding: 20px 0px; }
+            .card__all__recette__body__content__title__p {
+              font-family: 'Anto', sans-serif; }
           .card__all__recette__body__content__ingredients {
             width: auto;
             height: auto;

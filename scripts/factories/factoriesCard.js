@@ -1,5 +1,5 @@
-function cardFactory(data) {
-  const {image,name,ingredients} = data
+function cardFactory (data) {
+  const {image, name, ingredients} = data;
   let str = image;
   str = image.replaceAll ('.jpg', '');
   let pict = str;
@@ -118,7 +118,7 @@ function cardFactory(data) {
       });
     }
 
-    return card0html
+    return card0html;
   }
   return {name, picture, makeCardDOM};
 }
