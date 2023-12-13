@@ -29,6 +29,7 @@ function executeClick (data) {
     '.card__header__todolist__content__delete'
   );
   const btnsArray = [...btns];
+  
   btnsArray.forEach ((item, index) => {
     //1ére boucle pour énumérer les élements choisis afin de repérer celui qui sera clicqué.
     item.addEventListener ('click', function () {
@@ -71,6 +72,7 @@ export function reqInputIngredient (vCardData) {
 
   // Mise en place du click d'ouverture ou de fermeture de la modal "Ingredients", avec création de l'input et de ses enfants
   const valuehtml = `
+ 
     <div class='card__header__naving__columnOne__header__modal__input'>
       <input type='text' id='searchIngredients' class='card__header__naving__columnOne__header__modal__input__content'/>
       <span class='glyphicon glyphicon-search'></span>
